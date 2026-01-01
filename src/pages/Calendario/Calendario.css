@@ -1,0 +1,349 @@
+.calendario {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.calendario-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.calendario-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0 0 8px 0;
+}
+
+.calendario-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.calendario-info-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.calendario-filtros {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.filtros-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 16px 0;
+}
+
+.filtros-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filtro-btn {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-200);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.filtro-btn:hover {
+  background: var(--gray-200);
+  border-color: var(--gray-300);
+}
+
+.filtro-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.calendario-eventos {
+  margin-bottom: 48px;
+}
+
+.mes-grupo {
+  margin-bottom: 40px;
+}
+
+.mes-titulo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mes-icon {
+  font-size: 2rem;
+}
+
+.eventos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.evento-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.evento-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateX(4px);
+}
+
+.evento-indicator {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+.evento-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.evento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.evento-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.evento-icon {
+  font-size: 1.8rem;
+}
+
+.evento-titulo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-blue {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.badge-green {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.badge-orange {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-gray {
+  background-color: var(--gray-200);
+  color: var(--gray-700);
+}
+
+.evento-fecha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--gray-600);
+  font-size: 0.95rem;
+}
+
+.fecha-icon {
+  font-size: 1.1rem;
+}
+
+.fecha-text {
+  font-weight: 600;
+}
+
+.evento-fase {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.fase-label {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.fase-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.evento-participantes {
+  border-top: 1px solid var(--gray-200);
+  padding-top: 16px;
+}
+
+.participantes-titulo {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin: 0 0 12px 0;
+}
+
+.participantes-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.participante-chip {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--gray-200);
+}
+
+.no-eventos {
+  background: white;
+  border-radius: 12px;
+  padding: 60px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.no-eventos-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.no-eventos h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 8px 0;
+}
+
+.no-eventos p {
+  font-size: 1rem;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.calendario-tipos {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.tipos-titulo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 28px 0;
+  text-align: center;
+}
+
+.tipos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.tipo-card {
+  background: var(--gray-50);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tipo-card:hover {
+  background: var(--gray-100);
+  border-color: var(--primary-color);
+  transform: translateY(-4px);
+}
+
+.tipo-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.tipo-titulo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin: 0 0 8px 0;
+}
+
+.tipo-descripcion {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .calendario-title {
+    font-size: 2rem;
+  }
+
+  .filtros-buttons {
+    flex-direction: column;
+  }
+
+  .filtro-btn {
+    width: 100%;
+  }
+
+  .evento-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tipos-grid {
+    grid-template-columns: 1fr;
+  }
+}
