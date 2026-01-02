@@ -1,0 +1,19 @@
+{
+  "name": "xp-dashboard-api",
+  "version": "1.0.0",
+  "description": "API Backend for XP Dashboard with File Persistence",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "server": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

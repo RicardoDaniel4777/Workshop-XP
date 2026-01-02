@@ -1,0 +1,16 @@
+[
+  {
+    "id": "standup-1767325264822",
+    "ayer": "Trabajar",
+    "hoy": "Deberes",
+    "bloqueos": "Sueño",
+    "fecha": "2025-12-24T03:41:04.822Z"
+  },
+  {
+    "id": "standup-1704067200000",
+    "ayer": "Repaso del backlog y criterios de aceptación",
+    "hoy": "Definir plan de entregas y velocidad del equipo",
+    "bloqueos": "Pendiente confirmación del cliente sobre prioridades",
+    "fecha": "2026-01-01T10:00:00.000Z"
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "numeroSprints": 3,
+  "sprints": {
+    "iter-1": {
+      "id": "iter-1",
+      "nombre": "Sprint 1",
+      "historias": ["HU-001", "HU-002"]
+    },
+    "iter-2": {
+      "id": "iter-2",
+      "nombre": "Sprint 2",
+      "historias": ["HU-003"]
+    },
+    "iter-3": {
+      "id": "iter-3",
+      "nombre": "Sprint 3",
+      "historias": []
+    }
+  },
+  "ultimaActualizacion": "2026-01-01T00:00:00.000Z"
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "codigo": "HU-001",
+    "titulo": "Búsqueda de productos por categoría",
+    "rol": "Cliente",
+    "accion": "buscar productos por categoría",
+    "beneficio": "encontrar rápidamente lo que necesito",
+    "prioridad": "Alta",
+    "storyPoints": 5,
+    "criteriosAceptacion": [
+      "El sistema debe mostrar todas las categorías disponibles",
+      "Los resultados deben filtrarse en tiempo real",
+      "Debe mostrar al menos 10 productos por categoría"
+    ],
+    "estado": "completada",
+    "iteracion": "Iteración 1",
+    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "codigo": "HU-002",
+    "titulo": "Reportes de ventas para administradores",
+    "rol": "Administrador",
+    "accion": "ver reportes de ventas mensuales",
+    "beneficio": "tomar decisiones informadas sobre el negocio",
+    "prioridad": "Alta",
+    "storyPoints": 8,
+    "criteriosAceptacion": [
+      "El reporte debe incluir gráficos de ventas",
+      "Debe permitir filtrar por fecha",
+      "Debe poder exportarse en PDF"
+    ],
+    "estado": "en-progreso",
+    "iteracion": "Iteración 2",
+    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "codigo": "HU-003",
+    "titulo": "Guardar preferencias del usuario",
+    "rol": "Usuario",
+    "accion": "guardar mis preferencias de visualización",
+    "beneficio": "no tener que configurar cada vez que ingreso",
+    "prioridad": "Media",
+    "storyPoints": 3,
+    "criteriosAceptacion": [
+      "Las preferencias deben persistir entre sesiones",
+      "Debe incluir tema (claro/oscuro)",
+      "Debe recordar el idioma seleccionado"
+    ],
+    "estado": "completada",
+    "iteracion": "Iteración 1",
+    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+  }
+]

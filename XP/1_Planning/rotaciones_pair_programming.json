@@ -1,0 +1,17 @@
+{
+  "juan": {
+    "iter-1": "Driver",
+    "iter-2": "Navigator",
+    "iter-3": "QA"
+  },
+  "maria": {
+    "iter-1": "Navigator",
+    "iter-2": "Driver",
+    "iter-3": "Soporte"
+  },
+  "carlos": {
+    "iter-1": "QA",
+    "iter-2": "Soporte",
+    "iter-3": "Driver"
+  }
+}

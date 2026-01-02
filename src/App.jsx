@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { XPProvider } from './context/XPContext';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Layout from './components/Layout/Layout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import FasesXP from './pages/FasesXP/FasesXP';
@@ -11,20 +12,22 @@ import './App.css';
 
 function App() {
   return (
-    <XPProvider>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/fases" element={<FasesXP />} />
-            <Route path="/actividad/:activityId" element={<ActivityDetail />} />
-            <Route path="/iteraciones" element={<Iteraciones />} />
-            <Route path="/calendario" element={<Calendario />} />
-            <Route path="/artefactos" element={<Artefactos />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </XPProvider>
+    <ErrorBoundary>
+      <XPProvider>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/fases" element={<FasesXP />} />
+              <Route path="/actividad/:activityId" element={<ActivityDetail />} />
+              <Route path="/iteraciones" element={<Iteraciones />} />
+              <Route path="/calendario" element={<Calendario />} />
+              <Route path="/artefactos" element={<Artefactos />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </XPProvider>
+    </ErrorBoundary>
   );
 }
 

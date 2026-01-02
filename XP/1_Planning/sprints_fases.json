@@ -1,0 +1,35 @@
+{
+  "sprints": [
+    {
+      "id": "iter-1",
+      "nombre": "Sprint 1",
+      "fases": {
+        "planificacion": 30,
+        "diseno": 25,
+        "desarrollo": 0,
+        "pruebas": 0
+      }
+    },
+    {
+      "id": "iter-2",
+      "nombre": "Sprint 2",
+      "fases": {
+        "planificacion": 30,
+        "diseno": 25,
+        "desarrollo": 0,
+        "pruebas": 0
+      }
+    },
+    {
+      "id": "iter-3",
+      "nombre": "Sprint 3",
+      "fases": {
+        "planificacion": 30,
+        "diseno": 25,
+        "desarrollo": 0,
+        "pruebas": 0
+      }
+    }
+  ],
+  "ultimaActualizacion": "2026-01-02T03:51:58.042Z"
+}
