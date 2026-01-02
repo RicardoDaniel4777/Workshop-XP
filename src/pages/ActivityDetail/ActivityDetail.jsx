@@ -14,35 +14,27 @@ const ActivityDetail = () => {
     iteraciones,
     crearHistoriaUsuario,
     actualizarHistoriaUsuario,
-    eliminarHistoriaUsuario
+    eliminarHistoriaUsuario,
+    numeroSprints,
+    actualizarNumeroSprints,
+    releasePlan,
+    asignarHistoriaASprint,
+    liberarHistoria,
+    sprintFases,
+    actualizarProgresoFaseSprint,
+    standups,
+    agregarStandup,
+    inicializarSprintPlan,
+    inicializarSprintFases
   } = useXP();
   const navigate = useNavigate();
   
   const [modalAbierto, setModalAbierto] = useState(false);
   const [historiaEditando, setHistoriaEditando] = useState(null);
-  const [releasePlan, setReleasePlan] = useState({});
-  const [numeroSprints, setNumeroSprints] = useState(iteraciones.length || 3);
-  const [sprintFases, setSprintFases] = useState([]);
   const [velocidadManual, setVelocidadManual] = useState(null);
   const [tiempoDisponible, setTiempoDisponible] = useState(80);
   const [rotaciones, setRotaciones] = useState({});
   const [standupForm, setStandupForm] = useState({ ayer: '', hoy: '', bloqueos: '' });
-  const [standups, setStandups] = useState([
-    {
-      id: 'standup-1',
-      ayer: 'Repaso del backlog y criterios',
-      hoy: 'Definir plan de entregas y velocidad',
-      bloqueos: 'Pendiente confirmación del cliente sobre prioridades',
-      fecha: new Date().toISOString()
-    },
-    {
-      id: 'standup-2',
-      ayer: 'Estimación de HU-001 a HU-003',
-      hoy: 'Asignar HU a Sprint 1 y 2',
-      bloqueos: 'Esperando maquetas de UX para HU-004',
-      fecha: new Date(Date.now() - 86400000).toISOString()
-    }
-  ]);
   
   const actividadConFase = obtenerActividad(activityId);
 
@@ -86,29 +78,6 @@ const ActivityDetail = () => {
   });
 
   useEffect(() => {
-    setReleasePlan(prev => {
-      const next = {};
-      sprintCatalog.forEach(sprint => {
-        next[sprint.id] = prev[sprint.id]
-          ? { ...prev[sprint.id], nombre: sprint.nombre }
-          : { nombre: sprint.nombre, historias: [] };
-      });
-      return next;
-    });
-  }, [sprintCatalog]);
-
-  useEffect(() => {
-    setSprintFases(prev => {
-      return sprintCatalog.map(sprint => {
-        const existente = prev.find(s => s.id === sprint.id);
-        return existente
-          ? { ...existente, nombre: sprint.nombre }
-          : { id: sprint.id, nombre: sprint.nombre, fases: defaultFases() };
-      });
-    });
-  }, [sprintCatalog]);
-
-  useEffect(() => {
     setRotaciones(prev => {
       const next = {};
       devsEnProyecto.forEach(dev => {
@@ -120,6 +89,14 @@ const ActivityDetail = () => {
       return next;
     });
   }, [devsEnProyecto, sprintCatalog]);
+
+  useEffect(() => {
+    // Inicializar releasePlan y sprintFases cuando cambia el catálogo de sprints
+    if (sprintCatalog.length > 0) {
+      inicializarSprintPlan(sprintCatalog);
+      inicializarSprintFases(sprintCatalog);
+    }
+  }, [sprintCatalog, inicializarSprintPlan, inicializarSprintFases]);
 
   const getEstadoBadgeClass = (estado) => {
     switch (estado) {
@@ -176,34 +153,6 @@ const ActivityDetail = () => {
     }
   };
 
-  const asignarHistoriaASprint = (codigo, sprintId) => {
-    if (!sprintId) return;
-    setReleasePlan(prev => {
-      const next = {};
-      Object.keys(prev).forEach(id => {
-        next[id] = {
-          ...prev[id],
-          historias: prev[id].historias.filter(hu => hu !== codigo)
-        };
-      });
-      next[sprintId].historias = [...next[sprintId].historias, codigo];
-      return next;
-    });
-  };
-
-  const liberarHistoria = (codigo) => {
-    setReleasePlan(prev => {
-      const next = {};
-      Object.keys(prev).forEach(id => {
-        next[id] = {
-          ...prev[id],
-          historias: prev[id].historias.filter(hu => hu !== codigo)
-        };
-      });
-      return next;
-    });
-  };
-
   const handleDropHistoria = (event, sprintId) => {
     event.preventDefault();
     const codigo = event.dataTransfer.getData('text/plain');
@@ -241,14 +190,6 @@ const ActivityDetail = () => {
 
   const velocidadEquipo = velocidadManual ?? velocidadSugerida;
 
-  const actualizarProgresoFaseSprint = (sprintId, faseClave, valor) => {
-    setSprintFases(prev => prev.map(sprint => (
-      sprint.id === sprintId
-        ? { ...sprint, fases: { ...sprint.fases, [faseClave]: valor } }
-        : sprint
-    )));
-  };
-
   const actualizarRotacion = (persona, sprintId, rol) => {
     setRotaciones(prev => ({
       ...prev,
@@ -259,18 +200,11 @@ const ActivityDetail = () => {
     }));
   };
 
-  const agregarStandup = () => {
+  const agregarStandupLocal = () => {
     if (!standupForm.ayer || !standupForm.hoy || !standupForm.bloqueos) {
       return;
     }
-    setStandups(prev => [
-      {
-        id: `standup-${Date.now()}`,
-        ...standupForm,
-        fecha: new Date().toISOString()
-      },
-      ...prev
-    ]);
+    agregarStandup(standupForm);
     setStandupForm({ ayer: '', hoy: '', bloqueos: '' });
   };
 
@@ -284,14 +218,7 @@ const ActivityDetail = () => {
           </p>
         </div>
         <div className="plan-inline-control">
-          <label htmlFor="numero-sprints"># Sprints</label>
-          <input
-            id="numero-sprints"
-            type="number"
-            min="1"
-            value={numeroSprints}
-            onChange={(event) => setNumeroSprints(Math.max(1, Number(event.target.value) || 1))}
-          />
+          <span className="sprint-count">Total de Sprints: <strong>{numeroSprints}</strong></span>
         </div>
       </div>
 
@@ -464,7 +391,7 @@ const ActivityDetail = () => {
             type="number"
             min="1"
             value={numeroSprints}
-            onChange={(event) => setNumeroSprints(Math.max(1, Number(event.target.value) || 1))}
+            onChange={(event) => actualizarNumeroSprints(Math.max(1, Number(event.target.value) || 1))}
           />
         </div>
       </div>
@@ -591,7 +518,7 @@ const ActivityDetail = () => {
             />
           </label>
         </div>
-        <button type="button" className="btn-primary standup-submit" onClick={agregarStandup}>
+        <button type="button" className="btn-primary standup-submit" onClick={agregarStandupLocal}>
           Guardar carta
         </button>
       </div>

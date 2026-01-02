@@ -13,6 +13,25 @@ export const useXP = () => {
 
 export const XPProvider = ({ children }) => {
   const [data, setData] = useState(mockData);
+  const [numeroSprints, setNumeroSprints] = useState(3);
+  const [releasePlan, setReleasePlan] = useState({});
+  const [sprintFases, setSprintFases] = useState([]);
+  const [standups, setStandups] = useState([
+    {
+      id: 'standup-1',
+      ayer: 'Repaso del backlog y criterios',
+      hoy: 'Definir plan de entregas y velocidad',
+      bloqueos: 'Pendiente confirmación del cliente sobre prioridades',
+      fecha: new Date().toISOString()
+    },
+    {
+      id: 'standup-2',
+      ayer: 'Estimación de HU-001 a HU-003',
+      hoy: 'Asignar HU a Sprint 1 y 2',
+      bloqueos: 'Esperando maquetas de UX para HU-004',
+      fecha: new Date(Date.now() - 86400000).toISOString()
+    }
+  ]);
   const [historiasUsuario, setHistoriasUsuario] = useState([
     {
       id: 1,
@@ -128,6 +147,89 @@ export const XPProvider = ({ children }) => {
     return historiasUsuario.find(h => h.id === id);
   };
 
+  // Funciones para gestionar planificación
+  const actualizarNumeroSprints = (num) => {
+    setNumeroSprints(num);
+  };
+
+  const asignarHistoriaASprint = (codigo, sprintId) => {
+    if (!sprintId) return;
+    setReleasePlan(prev => {
+      const next = {};
+      Object.keys(prev).forEach(id => {
+        next[id] = {
+          ...prev[id],
+          historias: prev[id].historias.filter(hu => hu !== codigo)
+        };
+      });
+      next[sprintId] = next[sprintId] || { nombre: '', historias: [] };
+      next[sprintId].historias = [...next[sprintId].historias, codigo];
+      return next;
+    });
+  };
+
+  const liberarHistoria = (codigo) => {
+    setReleasePlan(prev => {
+      const next = {};
+      Object.keys(prev).forEach(id => {
+        next[id] = {
+          ...prev[id],
+          historias: prev[id].historias.filter(hu => hu !== codigo)
+        };
+      });
+      return next;
+    });
+  };
+
+  const inicializarSprintPlan = (sprintCatalog) => {
+    setReleasePlan(prev => {
+      const next = {};
+      sprintCatalog.forEach(sprint => {
+        next[sprint.id] = prev[sprint.id]
+          ? { ...prev[sprint.id], nombre: sprint.nombre }
+          : { nombre: sprint.nombre, historias: [] };
+      });
+      return next;
+    });
+  };
+
+  const inicializarSprintFases = (sprintCatalog) => {
+    setSprintFases(prev => {
+      return sprintCatalog.map(sprint => {
+        const existente = prev.find(s => s.id === sprint.id);
+        return existente
+          ? { ...existente, nombre: sprint.nombre }
+          : {
+              id: sprint.id,
+              nombre: sprint.nombre,
+              fases: {
+                planificacion: 30,
+                diseno: 25,
+                desarrollo: 0,
+                pruebas: 0
+              }
+            };
+      });
+    });
+  };
+
+  const actualizarProgresoFaseSprint = (sprintId, faseClave, valor) => {
+    setSprintFases(prev => prev.map(sprint => (
+      sprint.id === sprintId
+        ? { ...sprint, fases: { ...sprint.fases, [faseClave]: valor } }
+        : sprint
+    )));
+  };
+
+  const agregarStandup = (standup) => {
+    const nuevoStandup = {
+      id: `standup-${Date.now()}`,
+      ...standup,
+      fecha: new Date().toISOString()
+    };
+    setStandups(prev => [nuevoStandup, ...prev]);
+  };
+
   const value = {
     data,
     proyecto: data.proyecto,
@@ -137,6 +239,10 @@ export const XPProvider = ({ children }) => {
     eventos: data.eventos,
     roles: data.roles,
     historiasUsuario,
+    numeroSprints,
+    releasePlan,
+    sprintFases,
+    standups,
     calcularProgresoGeneral,
     obtenerActividad,
     obtenerEstadisticas,
@@ -145,7 +251,14 @@ export const XPProvider = ({ children }) => {
     crearHistoriaUsuario,
     actualizarHistoriaUsuario,
     eliminarHistoriaUsuario,
-    obtenerHistoriaUsuario
+    obtenerHistoriaUsuario,
+    actualizarNumeroSprints,
+    asignarHistoriaASprint,
+    liberarHistoria,
+    inicializarSprintPlan,
+    inicializarSprintFases,
+    actualizarProgresoFaseSprint,
+    agregarStandup
   };
 
   return <XPContext.Provider value={value}>{children}</XPContext.Provider>;
