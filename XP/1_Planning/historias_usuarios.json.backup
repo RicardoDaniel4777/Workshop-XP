@@ -52,23 +52,5 @@
     "estado": "completada",
     "iteracion": "Iteración 1",
     "fechaCreacion": "2026-01-01T00:00:00.000Z"
-  },
-  {
-    "titulo": "HU-01 – Lectura del archivo Grupo##.csv",
-    "rol": "sistema",
-    "accion": "leer el archivo Grupo##.csv",
-    "beneficio": "obtener coordenadas, horarios y tipo de arsenal",
-    "prioridad": "Alta",
-    "storyPoints": 5,
-    "criteriosAceptacion": [
-      "El archivo corresponde al grupo",
-      "Se leen todas las filas",
-      "Se muestran los datos correctamente"
-    ],
-    "estado": "pendiente",
-    "iteracion": "Iteración 1",
-    "id": 4,
-    "codigo": "HU-004",
-    "fechaCreacion": "2026-01-02T16:10:05.562Z"
   }
 ]
