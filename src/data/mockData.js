@@ -84,6 +84,17 @@ export const mockData = {
           roles: ["Sofia Torres", "Miguel Ángel"],
           artefactos: ["velocity-chart"],
           enlace: "/actividad/velocidad-proyecto"
+        },
+        {
+          id: "reuniones",
+          nombre: "Reuniones Diarias (Stand-up)",
+          tipo: "actividad",
+          estado: "en-progreso",
+          progreso: 75,
+          descripcion: "Reuniones diarias de sincronización del equipo para compartir avances, planes y bloqueos.",
+          roles: ["Laura Martínez", "Ana López", "Pedro Sánchez"],
+          artefactos: ["standup-cards"],
+          enlace: "/actividad/reuniones"
         }
       ]
     },

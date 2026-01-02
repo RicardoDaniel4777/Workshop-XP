@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useXP } from '../../context/XPContext';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
@@ -11,6 +11,7 @@ const ActivityDetail = () => {
     obtenerActividad, 
     actualizarProgresoActividad,
     historiasUsuario,
+    iteraciones,
     crearHistoriaUsuario,
     actualizarHistoriaUsuario,
     eliminarHistoriaUsuario
@@ -19,6 +20,29 @@ const ActivityDetail = () => {
   
   const [modalAbierto, setModalAbierto] = useState(false);
   const [historiaEditando, setHistoriaEditando] = useState(null);
+  const [releasePlan, setReleasePlan] = useState({});
+  const [numeroSprints, setNumeroSprints] = useState(iteraciones.length || 3);
+  const [sprintFases, setSprintFases] = useState([]);
+  const [velocidadManual, setVelocidadManual] = useState(null);
+  const [tiempoDisponible, setTiempoDisponible] = useState(80);
+  const [rotaciones, setRotaciones] = useState({});
+  const [standupForm, setStandupForm] = useState({ ayer: '', hoy: '', bloqueos: '' });
+  const [standups, setStandups] = useState([
+    {
+      id: 'standup-1',
+      ayer: 'Repaso del backlog y criterios',
+      hoy: 'Definir plan de entregas y velocidad',
+      bloqueos: 'Pendiente confirmación del cliente sobre prioridades',
+      fecha: new Date().toISOString()
+    },
+    {
+      id: 'standup-2',
+      ayer: 'Estimación de HU-001 a HU-003',
+      hoy: 'Asignar HU a Sprint 1 y 2',
+      bloqueos: 'Esperando maquetas de UX para HU-004',
+      fecha: new Date(Date.now() - 86400000).toISOString()
+    }
+  ]);
   
   const actividadConFase = obtenerActividad(activityId);
 
@@ -38,6 +62,64 @@ const ActivityDetail = () => {
   }
 
   const { fase, faseId, ...actividad } = actividadConFase;
+
+  const sprintCatalog = useMemo(() => {
+    return Array.from({ length: numeroSprints }, (_, idx) => {
+      const iter = iteraciones[idx];
+      return {
+        id: iter?.id || `sprint-${idx + 1}`,
+        nombre: iter?.nombre || `Sprint ${iter?.numero || idx + 1}`
+      };
+    });
+  }, [iteraciones, numeroSprints]);
+
+  const devsEnProyecto = useMemo(() => {
+    const equipos = iteraciones.flatMap(iter => iter.equipo || []);
+    return Array.from(new Set(equipos));
+  }, [iteraciones]);
+
+  const defaultFases = () => ({
+    planificacion: 30,
+    diseno: 25,
+    desarrollo: 0,
+    pruebas: 0
+  });
+
+  useEffect(() => {
+    setReleasePlan(prev => {
+      const next = {};
+      sprintCatalog.forEach(sprint => {
+        next[sprint.id] = prev[sprint.id]
+          ? { ...prev[sprint.id], nombre: sprint.nombre }
+          : { nombre: sprint.nombre, historias: [] };
+      });
+      return next;
+    });
+  }, [sprintCatalog]);
+
+  useEffect(() => {
+    setSprintFases(prev => {
+      return sprintCatalog.map(sprint => {
+        const existente = prev.find(s => s.id === sprint.id);
+        return existente
+          ? { ...existente, nombre: sprint.nombre }
+          : { id: sprint.id, nombre: sprint.nombre, fases: defaultFases() };
+      });
+    });
+  }, [sprintCatalog]);
+
+  useEffect(() => {
+    setRotaciones(prev => {
+      const next = {};
+      devsEnProyecto.forEach(dev => {
+        next[dev] = {};
+        sprintCatalog.forEach(sprint => {
+          next[dev][sprint.id] = prev[dev]?.[sprint.id] || 'Driver';
+        });
+      });
+      return next;
+    });
+  }, [devsEnProyecto, sprintCatalog]);
 
   const getEstadoBadgeClass = (estado) => {
     switch (estado) {
@@ -91,6 +173,471 @@ const ActivityDetail = () => {
   const handleEliminarHistoria = (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar esta historia de usuario?')) {
       eliminarHistoriaUsuario(id);
+    }
+  };
+
+  const asignarHistoriaASprint = (codigo, sprintId) => {
+    if (!sprintId) return;
+    setReleasePlan(prev => {
+      const next = {};
+      Object.keys(prev).forEach(id => {
+        next[id] = {
+          ...prev[id],
+          historias: prev[id].historias.filter(hu => hu !== codigo)
+        };
+      });
+      next[sprintId].historias = [...next[sprintId].historias, codigo];
+      return next;
+    });
+  };
+
+  const liberarHistoria = (codigo) => {
+    setReleasePlan(prev => {
+      const next = {};
+      Object.keys(prev).forEach(id => {
+        next[id] = {
+          ...prev[id],
+          historias: prev[id].historias.filter(hu => hu !== codigo)
+        };
+      });
+      return next;
+    });
+  };
+
+  const handleDropHistoria = (event, sprintId) => {
+    event.preventDefault();
+    const codigo = event.dataTransfer.getData('text/plain');
+    if (codigo) {
+      asignarHistoriaASprint(codigo, sprintId);
+    }
+  };
+
+  const historiasAsignadas = useMemo(
+    () => Object.values(releasePlan).flatMap(sprint => sprint.historias),
+    [releasePlan]
+  );
+
+  const historiasDisponibles = useMemo(
+    () => historiasUsuario.filter(h => !historiasAsignadas.includes(h.codigo)),
+    [historiasAsignadas, historiasUsuario]
+  );
+
+  const calcularDuracionSprint = (sprintId) => {
+    const historias = releasePlan[sprintId]?.historias || [];
+    return historias.reduce((sum, codigo) => {
+      const historia = historiasUsuario.find(h => h.codigo === codigo);
+      return sum + (historia?.storyPoints || 0);
+    }, 0);
+  };
+
+  const totalStoryPoints = useMemo(
+    () => historiasUsuario.reduce((sum, h) => sum + h.storyPoints, 0),
+    [historiasUsuario]
+  );
+
+  const velocidadSugerida = sprintCatalog.length
+    ? Math.round(totalStoryPoints / sprintCatalog.length)
+    : totalStoryPoints;
+
+  const velocidadEquipo = velocidadManual ?? velocidadSugerida;
+
+  const actualizarProgresoFaseSprint = (sprintId, faseClave, valor) => {
+    setSprintFases(prev => prev.map(sprint => (
+      sprint.id === sprintId
+        ? { ...sprint, fases: { ...sprint.fases, [faseClave]: valor } }
+        : sprint
+    )));
+  };
+
+  const actualizarRotacion = (persona, sprintId, rol) => {
+    setRotaciones(prev => ({
+      ...prev,
+      [persona]: {
+        ...(prev[persona] || {}),
+        [sprintId]: rol
+      }
+    }));
+  };
+
+  const agregarStandup = () => {
+    if (!standupForm.ayer || !standupForm.hoy || !standupForm.bloqueos) {
+      return;
+    }
+    setStandups(prev => [
+      {
+        id: `standup-${Date.now()}`,
+        ...standupForm,
+        fecha: new Date().toISOString()
+      },
+      ...prev
+    ]);
+    setStandupForm({ ayer: '', hoy: '', bloqueos: '' });
+  };
+
+  const renderReleasePlan = () => (
+    <div className="plan-card release-plan-card">
+      <div className="plan-card-head">
+        <div>
+          <h3>Plan de Entregas (Release Plan)</h3>
+          <p className="plan-card-subtitle">
+            Arrastra o selecciona historias y asígnalas a un sprint para visualizar el esfuerzo.
+          </p>
+        </div>
+        <div className="plan-inline-control">
+          <label htmlFor="numero-sprints"># Sprints</label>
+          <input
+            id="numero-sprints"
+            type="number"
+            min="1"
+            value={numeroSprints}
+            onChange={(event) => setNumeroSprints(Math.max(1, Number(event.target.value) || 1))}
+          />
+        </div>
+      </div>
+
+      <div className="release-plan-layout">
+        <div className="release-backlog">
+          <div className="panel-title">Backlog de Historias</div>
+          {historiasDisponibles.length === 0 ? (
+            <p className="empty-hu">Todas las historias están asignadas.</p>
+          ) : (
+            <div className="hu-pills">
+              {historiasDisponibles.map(historia => (
+                <div
+                  key={historia.codigo}
+                  className="hu-pill"
+                  draggable
+                  onDragStart={(event) => event.dataTransfer.setData('text/plain', historia.codigo)}
+                >
+                  <div className="hu-pill-top">
+                    <span className="hu-code">{historia.codigo}</span>
+                    <span className="hu-points">{historia.storyPoints} pts</span>
+                  </div>
+                  <p className="hu-title">{historia.titulo}</p>
+                  <select
+                    aria-label={`Asignar ${historia.codigo}`}
+                    defaultValue=""
+                    onChange={(event) => asignarHistoriaASprint(historia.codigo, event.target.value)}
+                  >
+                    <option value="">Asignar a sprint</option>
+                    {sprintCatalog.map(sprint => (
+                      <option key={sprint.id} value={sprint.id}>{sprint.nombre}</option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="sprint-drop-grid">
+          {sprintCatalog.map(sprint => (
+            <div
+              key={sprint.id}
+              className="sprint-drop"
+              onDragOver={(event) => event.preventDefault()}
+              onDrop={(event) => handleDropHistoria(event, sprint.id)}
+            >
+              <div className="sprint-drop-head">
+                <div>
+                  <p className="sprint-name">{sprint.nombre}</p>
+                  <span className="sprint-meta">{releasePlan[sprint.id]?.historias.length || 0} historias</span>
+                </div>
+                <span className="badge badge-info">{calcularDuracionSprint(sprint.id)} pts</span>
+              </div>
+              <div className="sprint-drop-body">
+                {(releasePlan[sprint.id]?.historias || []).length === 0 ? (
+                  <div className="drop-placeholder">Suelta una HU aquí</div>
+                ) : (
+                  releasePlan[sprint.id].historias.map(codigo => {
+                    const historia = historiasUsuario.find(h => h.codigo === codigo);
+                    return (
+                      <div key={codigo} className="hu-assigned">
+                        <div className="hu-assigned-main">
+                          <span className="hu-code">{codigo}</span>
+                          <span className="hu-assigned-title">{historia?.titulo}</span>
+                        </div>
+                        <div className="hu-assigned-actions">
+                          <span className="hu-points">{historia?.storyPoints || 0} pts</span>
+                          <button type="button" className="chip-remove" onClick={() => liberarHistoria(codigo)}>✕</button>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="release-summary">
+        <div className="release-summary-title">Resumen por Sprint</div>
+        <table className="release-summary-table">
+          <thead>
+            <tr>
+              <th>Sprint</th>
+              <th>Historias asignadas</th>
+              <th>Duración estimada</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sprintCatalog.map(sprint => (
+              <tr key={sprint.id}>
+                <td>{sprint.nombre}</td>
+                <td>{releasePlan[sprint.id]?.historias.length ? releasePlan[sprint.id].historias.join(', ') : 'Sin asignar'}</td>
+                <td>{calcularDuracionSprint(sprint.id)} pts</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const renderVelocidad = () => (
+    <div className="plan-card velocity-card">
+      <h3>Velocidad del Proyecto</h3>
+      <p className="plan-card-subtitle">
+        Calcula la velocidad sugerida y ajusta manualmente según la capacidad real del equipo.
+      </p>
+      <div className="velocity-grid">
+        <div className="velocity-field">
+          <label htmlFor="tiempo-disponible">Tiempo disponible (person-days)</label>
+          <input
+            id="tiempo-disponible"
+            type="number"
+            min="1"
+            value={tiempoDisponible}
+            onChange={(event) => setTiempoDisponible(Math.max(1, Number(event.target.value) || 1))}
+          />
+          <span className="helper-text">Ayuda a contrastar capacidad vs. carga</span>
+        </div>
+        <div className="velocity-field">
+          <label>Velocidad sugerida</label>
+          <div className="velocity-value">{velocidadSugerida} pts/iteración</div>
+        </div>
+        <div className="velocity-field">
+          <label htmlFor="velocidad-manual">Ajuste manual del equipo</label>
+          <input
+            id="velocidad-manual"
+            type="number"
+            min="1"
+            value={velocidadEquipo}
+            onChange={(event) => setVelocidadManual(Math.max(1, Number(event.target.value) || 1))}
+          />
+          <span className="helper-text">Decisión consensuada del equipo</span>
+        </div>
+        <div className="velocity-metrics">
+          <div>
+            <p className="metric-label">Sprints configurados</p>
+            <p className="metric-value-small">{sprintCatalog.length}</p>
+          </div>
+          <div>
+            <p className="metric-label">Story Points totales</p>
+            <p className="metric-value-small">{totalStoryPoints}</p>
+          </div>
+          <div>
+            <p className="metric-label">Capacidad estimada</p>
+            <p className="metric-value-small">{Math.round(tiempoDisponible / (sprintCatalog.length || 1))} días/sprint</p>
+          </div>
+          <div>
+            <p className="metric-label">Velocidad acordada</p>
+            <p className="metric-value-small highlight">{velocidadEquipo} pts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderGestorIteraciones = () => (
+    <div className="plan-card iterations-card">
+      <div className="plan-card-head">
+        <div>
+          <h3>Gestor de Iteraciones</h3>
+          <p className="plan-card-subtitle">Controla el avance de las 4 fases XP en cada sprint.</p>
+        </div>
+        <div className="plan-inline-control">
+          <label htmlFor="numero-sprints-iter"># Sprints</label>
+          <input
+            id="numero-sprints-iter"
+            type="number"
+            min="1"
+            value={numeroSprints}
+            onChange={(event) => setNumeroSprints(Math.max(1, Number(event.target.value) || 1))}
+          />
+        </div>
+      </div>
+      <div className="mini-sprints-grid">
+        {sprintFases.map(sprint => {
+          const promedio = Math.round(
+            (sprint.fases.planificacion + sprint.fases.diseno + sprint.fases.desarrollo + sprint.fases.pruebas) / 4
+          );
+          return (
+            <div key={sprint.id} className="mini-sprint-card">
+              <div className="mini-sprint-head">
+                <div>
+                  <p className="sprint-name">{sprint.nombre}</p>
+                  <span className="sprint-meta">Promedio {promedio}%</span>
+                </div>
+                <div className="mini-progress">
+                  <ProgressBar progreso={promedio} height="8px" />
+                </div>
+              </div>
+
+              <div className="fase-rows">
+                {[
+                  ['planificacion', 'Planificación'],
+                  ['diseno', 'Diseño'],
+                  ['desarrollo', 'Desarrollo'],
+                  ['pruebas', 'Pruebas']
+                ].map(([clave, etiqueta]) => (
+                  <div key={clave} className="fase-row">
+                    <span className="fase-label">{etiqueta}</span>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      step="5"
+                      value={sprint.fases[clave]}
+                      onChange={(event) => actualizarProgresoFaseSprint(sprint.id, clave, Number(event.target.value))}
+                    />
+                    <span className="fase-value">{sprint.fases[clave]}%</span>
+                  </div>
+                ))}
+              </div>
+             </div>
+           );
+         })}
+       </div>
+     </div>
+   );
+
+  const renderRotaciones = () => (
+    <div className="plan-card rotations-card">
+      <h3>Rotaciones (Pair Programming)</h3>
+      <p className="plan-card-subtitle">Asigna rol por sprint para mantener rotación saludable.</p>
+      <div className="rotaciones-table-wrapper">
+        <table className="rotaciones-table">
+          <thead>
+            <tr>
+              <th>Persona</th>
+              {sprintCatalog.map(sprint => (
+                <th key={sprint.id}>{sprint.nombre}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {devsEnProyecto.map(persona => (
+              <tr key={persona}>
+                <td className="persona-col">{persona}</td>
+                {sprintCatalog.map(sprint => (
+                  <td key={sprint.id}>
+                    <select
+                      value={rotaciones[persona]?.[sprint.id] || 'Driver'}
+                      onChange={(event) => actualizarRotacion(persona, sprint.id, event.target.value)}
+                    >
+                      <option value="Driver">Driver</option>
+                      <option value="Navigator">Navigator</option>
+                      <option value="QA">QA</option>
+                      <option value="Soporte">Soporte</option>
+                    </select>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {devsEnProyecto.length === 0 && (
+          <p className="empty-hu">Agrega integrantes al equipo para gestionar rotaciones.</p>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderStandup = () => (
+    <div className="plan-card standup-card">
+      <div className="plan-card-head">
+        <div>
+          <h3>Reuniones Diarias (Stand-up)</h3>
+          <p className="plan-card-subtitle">Captura las cartas diarias y mantenlas visibles.</p>
+        </div>
+      </div>
+
+      <div className="standup-form">
+        <div className="standup-grid">
+          <label>
+            Qué se hizo ayer
+            <textarea
+              value={standupForm.ayer}
+              onChange={(event) => setStandupForm({ ...standupForm, ayer: event.target.value })}
+              placeholder="Resumen breve de ayer"
+            />
+          </label>
+          <label>
+            Qué se va a hacer hoy
+            <textarea
+              value={standupForm.hoy}
+              onChange={(event) => setStandupForm({ ...standupForm, hoy: event.target.value })}
+              placeholder="Objetivo principal de hoy"
+            />
+          </label>
+          <label>
+            Bloqueos / Problemas
+            <textarea
+              value={standupForm.bloqueos}
+              onChange={(event) => setStandupForm({ ...standupForm, bloqueos: event.target.value })}
+              placeholder="Riesgos, dependencias o impedimentos"
+            />
+          </label>
+        </div>
+        <button type="button" className="btn-primary standup-submit" onClick={agregarStandup}>
+          Guardar carta
+        </button>
+      </div>
+
+      <div className="standup-list">
+        {standups.map(item => (
+          <div key={item.id} className="standup-card-item">
+            <div className="standup-meta">
+              {new Date(item.fecha).toLocaleString('es-ES', {
+                day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit'
+              })}
+            </div>
+            <div className="standup-fields">
+              <div>
+                <p className="standup-label">Ayer</p>
+                <p className="standup-text">{item.ayer}</p>
+              </div>
+              <div>
+                <p className="standup-label">Hoy</p>
+                <p className="standup-text">{item.hoy}</p>
+              </div>
+              <div>
+                <p className="standup-label">Bloqueos</p>
+                <p className="standup-text">{item.bloqueos}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderPlanificacionTool = () => {
+    switch (activityId) {
+      case 'plan-entregas':
+        return renderReleasePlan();
+      case 'velocidad-proyecto':
+        return renderVelocidad();
+      case 'iteraciones-cortas':
+        return renderGestorIteraciones();
+      case 'planning-game':
+        return renderRotaciones();
+      case 'reuniones':
+        return renderStandup();
+      default:
+        return null;
     }
   };
 
@@ -235,6 +782,8 @@ function suma(...numeros) {
         );
     }
   };
+
+  const planificacionTool = faseId === 'planificacion' ? renderPlanificacionTool() : null;
 
   return (
     <div className="activity-detail">
@@ -432,6 +981,13 @@ function suma(...numeros) {
             </Link>
           </div>
         </div>
+
+        {planificacionTool && (
+          <div className="content-card planificacion-tools">
+            <h2 className="card-title">Herramienta Interactiva de Planificación</h2>
+            {planificacionTool}
+          </div>
+        )}
       </div>
 
       {/* Modal de Historias de Usuario */}
