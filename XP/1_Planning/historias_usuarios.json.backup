@@ -1,56 +1,312 @@
 [
   {
+    "titulo": "HU01 – Lectura del archivo Grupo##.csv",
+    "rol": "Sistema",
+    "accion": "Quiero leer el archivo Grupo##.csv",
+    "beneficio": "Para obtener coordenadas, horarios y tipo de arsenal",
+    "prioridad": "Alta",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "El archivo corresponde al grupo",
+      "Se leen todas las filas",
+      "Se muestran los datos correctamente"
+    ],
+    "estado": "pendiente",
+    "iteracion": "Iteración 1",
     "id": 1,
     "codigo": "HU-001",
-    "titulo": "Búsqueda de productos por categoría",
-    "rol": "Cliente",
-    "accion": "buscar productos por categoría",
-    "beneficio": "encontrar rápidamente lo que necesito",
-    "prioridad": "Alta",
-    "storyPoints": 5,
-    "criteriosAceptacion": [
-      "El sistema debe mostrar todas las categorías disponibles",
-      "Los resultados deben filtrarse en tiempo real",
-      "Debe mostrar al menos 10 productos por categoría"
-    ],
-    "estado": "completada",
-    "iteracion": "Iteración 1",
-    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+    "fechaCreacion": "2026-01-03T01:26:16.639Z",
+    "fechaModificacion": "2026-01-03T01:26:28.462Z"
   },
   {
+    "titulo": "HU02 – Autenticación de usuarios",
+    "rol": "integrante",
+    "accion": "Quiero autenticarme con usuario y contraseña",
+    "beneficio": "Para acceder al sistema de AntCiberDron de forma segura",
+    "prioridad": "Alta",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Máximo 3 intentos",
+      "Usuarios: integrantes del grupo y profesor (patmic / 123)",
+      "Si falla 3 veces, el sistema se cierra"
+    ],
+    "estado": "pendiente",
+    "iteracion": "Iteración 1",
     "id": 2,
     "codigo": "HU-002",
-    "titulo": "Reportes de ventas para administradores",
-    "rol": "Administrador",
-    "accion": "ver reportes de ventas mensuales",
-    "beneficio": "tomar decisiones informadas sobre el negocio",
-    "prioridad": "Alta",
-    "storyPoints": 8,
-    "criteriosAceptacion": [
-      "El reporte debe incluir gráficos de ventas",
-      "Debe permitir filtrar por fecha",
-      "Debe poder exportarse en PDF"
-    ],
-    "estado": "en-progreso",
-    "iteracion": "Iteración 2",
-    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+    "fechaCreacion": "2026-01-03T01:31:24.855Z"
   },
   {
+    "titulo": "HU03 – Presentación del equipo",
+    "rol": "usuario autenticado",
+    "accion": "Quiero ver los datos del equipo",
+    "beneficio": "Para identificar a los integrantes del proyecto",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Mostrar cédula y nombre",
+      "Mostrar nombre del equipo"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
     "id": 3,
     "codigo": "HU-003",
-    "titulo": "Guardar preferencias del usuario",
+    "fechaCreacion": "2026-01-03T01:32:41.434Z"
+  },
+  {
+    "titulo": "HU04 – Visualización del loading",
     "rol": "Usuario",
-    "accion": "guardar mis preferencias de visualización",
-    "beneficio": "no tener que configurar cada vez que ingreso",
+    "accion": "ver un loading mientras se procesan las coordenadas",
+    "beneficio": "conocer el avance de carga del sistema",
     "prioridad": "Media",
-    "storyPoints": 3,
+    "storyPoints": 0,
     "criteriosAceptacion": [
-      "Las preferencias deben persistir entre sesiones",
-      "Debe incluir tema (claro/oscuro)",
-      "Debe recordar el idioma seleccionado"
+      "Usar animación / \\ | -",
+      "Mostrar porcentaje de avance",
+      "Mostrar por cada línea leída"
     ],
-    "estado": "completada",
-    "iteracion": "Iteración 1",
-    "fechaCreacion": "2026-01-01T00:00:00.000Z"
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 4,
+    "codigo": "HU-004",
+    "fechaCreacion": "2026-01-03T01:34:08.812Z"
+  },
+  {
+    "titulo": "HU-05 – Construcción del autómata determinista",
+    "rol": "desarrollador",
+    "accion": "construir un autómata finito determinista",
+    "beneficio": "reconocer el lenguaje del tipo de arsenal",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Basado en los últimos dígitos de las cédulas",
+      "Reconoce el lenguaje definido (ej. L = { abcdt+ , ab* })",
+      "Incluye grafo del autómata"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 5,
+    "codigo": "HU-005",
+    "fechaCreacion": "2026-01-03T01:35:23.127Z"
+  },
+  {
+    "titulo": "HU06 – Validación del tipo de arsenal",
+    "rol": "bomba BBA",
+    "accion": "validar una cadena usando el autómata",
+    "beneficio": "decidir si debo explotar",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Retorna true o false",
+      "Solo acepta lenguajes válidos",
+      "Funciona por cada coordenada"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 6,
+    "codigo": "HU-006",
+    "fechaCreacion": "2026-01-03T01:36:25.304Z"
+  },
+  {
+    "titulo": "HU07 – Creación del TIPO_HORMIGA",
+    "rol": "la KGD ",
+    "accion": "crear un TIPO_HORMIGA que derive de la clase Hormiga",
+    "beneficio": "que el sistema maneje distintos tipos de hormigas con comportamiento heredado",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "El TIPO_HORMIGA debe derivar de Hormiga.",
+      "El sistema debe reconocer al TIPO_HORMIGA como una hormiga válida.",
+      "No se permite crear un TIPO_HORMIGA sin herencia de Hormiga."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 7,
+    "codigo": "HU-007",
+    "fechaCreacion": "2026-01-03T01:40:35.775Z",
+    "fechaModificacion": "2026-01-03T01:41:23.342Z"
+  },
+  {
+    "titulo": "HU08 – Estado inicial HLarva",
+    "rol": "la KGD ",
+    "accion": "que toda hormiga creada nazca en estado HLarva ",
+    "beneficio": "que su ciclo de vida inicie correctamente",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Toda hormiga creada inicia como HLarva.",
+      "HLarva debe tener estado de vida activo.",
+      "HLarva no puede iniciar directamente como TIPO_HORMIGA."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 8,
+    "codigo": "HU-008",
+    "fechaCreacion": "2026-01-03T01:43:01.251Z"
+  },
+  {
+    "titulo": "HU09 – Alimentación de HLarva con néctar",
+    "rol": "la KGD ",
+    "accion": "que la HLarva consuma néctar para vivir",
+    "beneficio": "que pueda mantenerse con vida antes de su transformación",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "HLarva vive si consume néctar.",
+      "Si HLarva no consume néctar, no puede mantenerse viva.",
+      "El néctar no transforma a la HLarva."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 9,
+    "codigo": "HU-009",
+    "fechaCreacion": "2026-01-03T01:44:24.949Z",
+    "fechaModificacion": "2026-01-03T01:44:54.381Z"
+  },
+  {
+    "titulo": "HU10 – Transformación de HLarva a TIPO_HORMIGA",
+    "rol": "la KGD ",
+    "accion": "ue la HLarva se transforme en su TIPO_HORMIGA al consumir ALIMENTO",
+    "beneficio": "que complete su proceso de evolución",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "La HLarva solo se transforma al consumir ALIMENTO.",
+      "Al transformarse, deja de ser HLarva.",
+      "La transformación genera un TIPO_HORMIGA válido."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 10,
+    "codigo": "HU-010",
+    "fechaCreacion": "2026-01-03T01:46:37.001Z"
+  },
+  {
+    "titulo": "HU11 – Supervivencia del TIPO_HORMIGA según alimento",
+    "rol": "la KGD ",
+    "accion": "que el TIPO_HORMIGA viva únicamente si consume su ALIMENTO",
+    "beneficio": "que se respeten las reglas de supervivencia del sistema",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "El TIPO_HORMIGA vive si consume su ALIMENTO.",
+      "Si no consume su ALIMENTO, el TIPO_HORMIGA no sobrevive.",
+      "El néctar no mantiene vivo al TIPO_HORMIGA."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 11,
+    "codigo": "HU-011",
+    "fechaCreacion": "2026-01-03T01:49:20.629Z"
+  },
+  {
+    "titulo": "HU12 – Interfaz de búsqueda de Tipo de Arsenal",
+    "rol": "la KGD ",
+    "accion": "una interfaz en AntCiberDron para buscar el Tipo de Arsenal",
+    "beneficio": "que pueda ingresar/seleccionar el tipo de arsenal a evaluar",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Debe existir una opción/acción “Buscar Tipo de Arsenal”.",
+      "La interfaz debe permitir ingresar o seleccionar un Tipo de Arsenal (palabra).",
+      "Si el campo está vacío, no se ejecuta la búsqueda y se muestra validación."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 12,
+    "codigo": "HU-012",
+    "fechaCreacion": "2026-01-03T01:53:13.436Z"
+  },
+  {
+    "titulo": "HU13 – Evaluación por autómata y retorno True/False",
+    "rol": "la KGD ",
+    "accion": "que al buscar un Tipo de Arsenal el sistema lo evalúe con el autómata",
+    "beneficio": "que obtenga un resultado True (aceptado) o False (rechazado) sobre si la bomba debe explotar",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Al ejecutar “Buscar”, el sistema debe evaluar el Tipo de Arsenal con el autómata.",
+      "Si la palabra es aceptada por el autómata, el resultado debe ser True.",
+      "Si la palabra no es aceptada, el resultado debe ser False.",
+      "El sistema debe mostrar el resultado (True/False) al usuario."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 13,
+    "codigo": "HU-013",
+    "fechaCreacion": "2026-01-03T01:54:28.140Z",
+    "fechaModificacion": "2026-01-03T01:54:45.846Z"
+  },
+  {
+    "titulo": "HU14 – Mostrar coordenada donde explota la BBA",
+    "rol": "la KGD ",
+    "accion": "que la acción de “Buscar” muestre la coordenada donde la bomba BBA explota",
+    "beneficio": "se identifique claramente el punto de ataque cuando el resultado sea True",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Si el resultado del autómata es True, el sistema debe presentar la coordenada donde explota la BBA.",
+      "La coordenada mostrada debe corresponder a la que está asociada al Tipo de Arsenal evaluado.",
+      "Si el resultado es False, el sistema debe indicar que no hay explosión y no presentar coordenada de explosión."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 14,
+    "codigo": "HU-014",
+    "fechaCreacion": "2026-01-03T01:56:19.512Z"
+  },
+  {
+    "titulo": "HU15 – Composición de extremidades del AntCiberDron",
+    "rol": "la KGD ",
+    "accion": "que el AntCiberDron esté compuesto por las mismas extremidades de una hormiga",
+    "beneficio": "que conserve la estructura base de la hormiga en su configuración",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Al crear/inicializar un AntCiberDron, el sistema debe asignarle las extremidades de una hormiga.",
+      "El AntCiberDron debe registrar al menos las patas necesarias para identificar pata delantera derecha e izquierda.",
+      "No se permite un AntCiberDron sin extremidades definidas."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 15,
+    "codigo": "HU-015",
+    "fechaCreacion": "2026-01-03T01:57:41.909Z"
+  },
+  {
+    "titulo": "HU16 – Equipar metralleta en pata delantera derecha",
+    "rol": "la KGD ",
+    "accion": "que la pata delantera derecha del AntCiberDron pueda cargar una metralleta",
+    "beneficio": "que el AntCiberDron tenga armamento asignado correctamente",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "El sistema debe permitir asignar una metralleta a la pata delantera derecha.",
+      "La metralleta no debe poder asignarse a otra extremidad distinta (según este requerimiento).",
+      "Debe visualizarse/registrarse que la pata delantera derecha tiene metralleta equipada."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 16,
+    "codigo": "HU-016",
+    "fechaCreacion": "2026-01-03T01:59:06.256Z"
+  },
+  {
+    "titulo": "HU17 – Equipar láser en pata delantera izquierda",
+    "rol": "la KGD ",
+    "accion": "que la pata delantera izquierda del AntCiberDron pueda cargar un láser",
+    "beneficio": "que el AntCiberDron disponga del arma láser en la extremidad definida",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "El sistema debe permitir asignar un láser a la pata delantera izquierda.",
+      "El láser no debe poder asignarse a otra extremidad distinta (según este requerimiento).",
+      "Debe visualizarse/registrarse que la pata delantera izquierda tiene láser equipado."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 17,
+    "codigo": "HU-017",
+    "fechaCreacion": "2026-01-03T02:01:51.091Z"
   }
 ]
