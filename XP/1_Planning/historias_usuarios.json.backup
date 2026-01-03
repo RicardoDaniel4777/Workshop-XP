@@ -5,7 +5,7 @@
     "accion": "Quiero leer el archivo Grupo##.csv",
     "beneficio": "Para obtener coordenadas, horarios y tipo de arsenal",
     "prioridad": "Alta",
-    "storyPoints": 0,
+    "storyPoints": 3,
     "criteriosAceptacion": [
       "El archivo corresponde al grupo",
       "Se leen todas las filas",
@@ -16,7 +16,7 @@
     "id": 1,
     "codigo": "HU-001",
     "fechaCreacion": "2026-01-03T01:26:16.639Z",
-    "fechaModificacion": "2026-01-03T01:26:28.462Z"
+    "fechaModificacion": "2026-01-03T04:19:54.745Z"
   },
   {
     "titulo": "HU02 – Autenticación de usuarios",
@@ -24,7 +24,7 @@
     "accion": "Quiero autenticarme con usuario y contraseña",
     "beneficio": "Para acceder al sistema de AntCiberDron de forma segura",
     "prioridad": "Alta",
-    "storyPoints": 0,
+    "storyPoints": 3,
     "criteriosAceptacion": [
       "Máximo 3 intentos",
       "Usuarios: integrantes del grupo y profesor (patmic / 123)",
@@ -34,7 +34,8 @@
     "iteracion": "Iteración 1",
     "id": 2,
     "codigo": "HU-002",
-    "fechaCreacion": "2026-01-03T01:31:24.855Z"
+    "fechaCreacion": "2026-01-03T01:31:24.855Z",
+    "fechaModificacion": "2026-01-03T04:20:07.609Z"
   },
   {
     "titulo": "HU03 – Presentación del equipo",
@@ -42,7 +43,7 @@
     "accion": "Quiero ver los datos del equipo",
     "beneficio": "Para identificar a los integrantes del proyecto",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Mostrar cédula y nombre",
       "Mostrar nombre del equipo"
@@ -51,7 +52,8 @@
     "iteracion": "",
     "id": 3,
     "codigo": "HU-003",
-    "fechaCreacion": "2026-01-03T01:32:41.434Z"
+    "fechaCreacion": "2026-01-03T01:32:41.434Z",
+    "fechaModificacion": "2026-01-03T04:20:20.553Z"
   },
   {
     "titulo": "HU04 – Visualización del loading",
@@ -59,7 +61,7 @@
     "accion": "ver un loading mientras se procesan las coordenadas",
     "beneficio": "conocer el avance de carga del sistema",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Usar animación / \\ | -",
       "Mostrar porcentaje de avance",
@@ -69,7 +71,8 @@
     "iteracion": "",
     "id": 4,
     "codigo": "HU-004",
-    "fechaCreacion": "2026-01-03T01:34:08.812Z"
+    "fechaCreacion": "2026-01-03T01:34:08.812Z",
+    "fechaModificacion": "2026-01-03T04:20:31.697Z"
   },
   {
     "titulo": "HU05 – Construcción del autómata determinista",
@@ -77,7 +80,7 @@
     "accion": "construir un autómata finito determinista",
     "beneficio": "reconocer el lenguaje del tipo de arsenal",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Basado en los últimos dígitos de las cédulas",
       "Reconoce el lenguaje definido (ej. L = { abcdt+ , ab* })",
@@ -88,7 +91,7 @@
     "id": 5,
     "codigo": "HU-005",
     "fechaCreacion": "2026-01-03T01:35:23.127Z",
-    "fechaModificacion": "2026-01-03T02:13:29.625Z"
+    "fechaModificacion": "2026-01-03T04:20:43.066Z"
   },
   {
     "titulo": "HU06 – Validación del tipo de arsenal",
@@ -96,7 +99,7 @@
     "accion": "validar una cadena usando el autómata",
     "beneficio": "decidir si debo explotar",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Retorna true o false",
       "Solo acepta lenguajes válidos",
@@ -106,7 +109,8 @@
     "iteracion": "",
     "id": 6,
     "codigo": "HU-006",
-    "fechaCreacion": "2026-01-03T01:36:25.304Z"
+    "fechaCreacion": "2026-01-03T01:36:25.304Z",
+    "fechaModificacion": "2026-01-03T04:20:56.633Z"
   },
   {
     "titulo": "HU07 – Creación del TIPO_HORMIGA",
@@ -114,7 +118,7 @@
     "accion": "crear un TIPO_HORMIGA que derive de la clase Hormiga",
     "beneficio": "que el sistema maneje distintos tipos de hormigas con comportamiento heredado",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "El TIPO_HORMIGA debe derivar de Hormiga.",
       "El sistema debe reconocer al TIPO_HORMIGA como una hormiga válida.",
@@ -125,7 +129,7 @@
     "id": 7,
     "codigo": "HU-007",
     "fechaCreacion": "2026-01-03T01:40:35.775Z",
-    "fechaModificacion": "2026-01-03T01:41:23.342Z"
+    "fechaModificacion": "2026-01-03T04:21:07.547Z"
   },
   {
     "titulo": "HU08 – Estado inicial HLarva",
@@ -133,7 +137,7 @@
     "accion": "que toda hormiga creada nazca en estado HLarva ",
     "beneficio": "que su ciclo de vida inicie correctamente",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Toda hormiga creada inicia como HLarva.",
       "HLarva debe tener estado de vida activo.",
@@ -143,7 +147,8 @@
     "iteracion": "",
     "id": 8,
     "codigo": "HU-008",
-    "fechaCreacion": "2026-01-03T01:43:01.251Z"
+    "fechaCreacion": "2026-01-03T01:43:01.251Z",
+    "fechaModificacion": "2026-01-03T04:21:19.772Z"
   },
   {
     "titulo": "HU09 – Alimentación de HLarva con néctar",
@@ -151,7 +156,7 @@
     "accion": "que la HLarva consuma néctar para vivir",
     "beneficio": "que pueda mantenerse con vida antes de su transformación",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "HLarva vive si consume néctar.",
       "Si HLarva no consume néctar, no puede mantenerse viva.",
@@ -162,7 +167,7 @@
     "id": 9,
     "codigo": "HU-009",
     "fechaCreacion": "2026-01-03T01:44:24.949Z",
-    "fechaModificacion": "2026-01-03T01:44:54.381Z"
+    "fechaModificacion": "2026-01-03T04:21:30.091Z"
   },
   {
     "titulo": "HU10 – Transformación de HLarva a TIPO_HORMIGA",
@@ -170,7 +175,7 @@
     "accion": "que la HLarva se transforme en su TIPO_HORMIGA al consumir ALIMENTO",
     "beneficio": "que complete su proceso de evolución",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "La HLarva solo se transforma al consumir ALIMENTO.",
       "Al transformarse, deja de ser HLarva.",
@@ -181,7 +186,7 @@
     "id": 10,
     "codigo": "HU-010",
     "fechaCreacion": "2026-01-03T01:46:37.001Z",
-    "fechaModificacion": "2026-01-03T02:14:24.256Z"
+    "fechaModificacion": "2026-01-03T04:21:41.524Z"
   },
   {
     "titulo": "HU11 – Supervivencia del TIPO_HORMIGA según alimento",
@@ -189,7 +194,7 @@
     "accion": "que el TIPO_HORMIGA viva únicamente si consume su ALIMENTO",
     "beneficio": "que se respeten las reglas de supervivencia del sistema",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "El TIPO_HORMIGA vive si consume su ALIMENTO.",
       "Si no consume su ALIMENTO, el TIPO_HORMIGA no sobrevive.",
@@ -199,7 +204,8 @@
     "iteracion": "",
     "id": 11,
     "codigo": "HU-011",
-    "fechaCreacion": "2026-01-03T01:49:20.629Z"
+    "fechaCreacion": "2026-01-03T01:49:20.629Z",
+    "fechaModificacion": "2026-01-03T04:21:52.722Z"
   },
   {
     "titulo": "HU12 – Interfaz de búsqueda de Tipo de Arsenal",
@@ -207,7 +213,7 @@
     "accion": "una interfaz en AntCiberDron para buscar el Tipo de Arsenal",
     "beneficio": "que pueda ingresar/seleccionar el tipo de arsenal a evaluar",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Debe existir una opción/acción “Buscar Tipo de Arsenal”.",
       "La interfaz debe permitir ingresar o seleccionar un Tipo de Arsenal (palabra).",
@@ -217,7 +223,8 @@
     "iteracion": "",
     "id": 12,
     "codigo": "HU-012",
-    "fechaCreacion": "2026-01-03T01:53:13.436Z"
+    "fechaCreacion": "2026-01-03T01:53:13.436Z",
+    "fechaModificacion": "2026-01-03T04:22:04.515Z"
   },
   {
     "titulo": "HU13 – Evaluación por autómata y retorno True/False",
@@ -225,7 +232,7 @@
     "accion": "que al buscar un Tipo de Arsenal el sistema lo evalúe con el autómata",
     "beneficio": "que obtenga un resultado True (aceptado) o False (rechazado) sobre si la bomba debe explotar",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Al ejecutar “Buscar”, el sistema debe evaluar el Tipo de Arsenal con el autómata.",
       "Si la palabra es aceptada por el autómata, el resultado debe ser True.",
@@ -237,7 +244,7 @@
     "id": 13,
     "codigo": "HU-013",
     "fechaCreacion": "2026-01-03T01:54:28.140Z",
-    "fechaModificacion": "2026-01-03T01:54:45.846Z"
+    "fechaModificacion": "2026-01-03T04:22:13.939Z"
   },
   {
     "titulo": "HU14 – Mostrar coordenada donde explota la BBA",
@@ -245,7 +252,7 @@
     "accion": "que la acción de “Buscar” muestre la coordenada donde la bomba BBA explota",
     "beneficio": "que se identifique claramente el punto de ataque cuando el resultado sea True",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Si el resultado del autómata es True, el sistema debe presentar la coordenada donde explota la BBA.",
       "La coordenada mostrada debe corresponder a la que está asociada al Tipo de Arsenal evaluado.",
@@ -256,7 +263,7 @@
     "id": 14,
     "codigo": "HU-014",
     "fechaCreacion": "2026-01-03T01:56:19.512Z",
-    "fechaModificacion": "2026-01-03T02:15:07.801Z"
+    "fechaModificacion": "2026-01-03T04:22:24.731Z"
   },
   {
     "titulo": "HU15 – Composición de extremidades del AntCiberDron",
@@ -264,7 +271,7 @@
     "accion": "que el AntCiberDron esté compuesto por las mismas extremidades de una hormiga",
     "beneficio": "que conserve la estructura base de la hormiga en su configuración",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Al crear/inicializar un AntCiberDron, el sistema debe asignarle las extremidades de una hormiga.",
       "El AntCiberDron debe registrar al menos las patas necesarias para identificar pata delantera derecha e izquierda.",
@@ -274,7 +281,8 @@
     "iteracion": "",
     "id": 15,
     "codigo": "HU-015",
-    "fechaCreacion": "2026-01-03T01:57:41.909Z"
+    "fechaCreacion": "2026-01-03T01:57:41.909Z",
+    "fechaModificacion": "2026-01-03T04:22:40.740Z"
   },
   {
     "titulo": "HU16 – Equipar metralleta en pata delantera derecha",
@@ -282,7 +290,7 @@
     "accion": "que la pata delantera derecha del AntCiberDron pueda cargar una metralleta",
     "beneficio": "que el AntCiberDron tenga armamento asignado correctamente",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "El sistema debe permitir asignar una metralleta a la pata delantera derecha.",
       "La metralleta no debe poder asignarse a otra extremidad distinta (según este requerimiento).",
@@ -292,7 +300,8 @@
     "iteracion": "",
     "id": 16,
     "codigo": "HU-016",
-    "fechaCreacion": "2026-01-03T01:59:06.256Z"
+    "fechaCreacion": "2026-01-03T01:59:06.256Z",
+    "fechaModificacion": "2026-01-03T04:22:50.563Z"
   },
   {
     "titulo": "HU17 – Equipar láser en pata delantera izquierda",
@@ -300,7 +309,7 @@
     "accion": "que la pata delantera izquierda del AntCiberDron pueda cargar un láser",
     "beneficio": "que el AntCiberDron disponga del arma láser en la extremidad definida",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "El sistema debe permitir asignar un láser a la pata delantera izquierda.",
       "El láser no debe poder asignarse a otra extremidad distinta (según este requerimiento).",
@@ -310,7 +319,8 @@
     "iteracion": "",
     "id": 17,
     "codigo": "HU-017",
-    "fechaCreacion": "2026-01-03T02:01:51.091Z"
+    "fechaCreacion": "2026-01-03T02:01:51.091Z",
+    "fechaModificacion": "2026-01-03T04:23:21.725Z"
   },
   {
     "titulo": "HU18 – Variación de potencia del láser según energía",
@@ -318,7 +328,7 @@
     "accion": "que la potencia del láser varíe según la energía de la fuente de poder",
     "beneficio": "que el comportamiento del láser dependa del nivel de energía disponible",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Dado que el láser está equipado, cuando cambia la energía de la fuente de poder, la potencia del láser debe actualizarse.",
       "Con energía baja, la potencia del láser debe ser menor que con energía alta.",
@@ -328,12 +338,13 @@
     "iteracion": "",
     "id": 18,
     "codigo": "HU-018",
-    "fechaCreacion": "2026-01-03T02:02:57.653Z"
+    "fechaCreacion": "2026-01-03T02:02:57.653Z",
+    "fechaModificacion": "2026-01-03T04:23:48.253Z"
   },
   {
     "titulo": "HU19 – Gestión de energía del AnticiberDron",
     "rol": "Usuario",
-    "accion": "que el AnticiberDron varíe su energía según la fuente de poder,",
+    "accion": "que el AnticiberDron varíe su energía según la fuente de poder",
     "beneficio": "optimizar su rendimiento y evitar fallos durante la misión.",
     "prioridad": "Media",
     "storyPoints": 0,
@@ -344,7 +355,8 @@
     "iteracion": "",
     "id": 19,
     "codigo": "HU-019",
-    "fechaCreacion": "2026-01-03T02:21:31.903Z"
+    "fechaCreacion": "2026-01-03T02:21:31.903Z",
+    "fechaModificacion": "2026-01-03T02:38:32.039Z"
   },
   {
     "titulo": "HU20 – Vuelo asistido por fuente de poder",
@@ -352,7 +364,7 @@
     "accion": "que el dron pueda volar usando energía de la fuente de poder",
     "beneficio": "garantizar estabilidad y continuidad en operaciones prolongadas.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -360,7 +372,8 @@
     "iteracion": "",
     "id": 20,
     "codigo": "HU-020",
-    "fechaCreacion": "2026-01-03T02:22:36.911Z"
+    "fechaCreacion": "2026-01-03T02:22:36.911Z",
+    "fechaModificacion": "2026-01-03T04:24:34.438Z"
   },
   {
     "titulo": "HU21 – Recarga y reemplazo de la fuente de poder",
@@ -368,7 +381,7 @@
     "accion": "que la fuente de poder sea recargable y reemplazable con asistencia de LIA",
     "beneficio": "reducir tiempos de inactividad y mejorar la eficiencia del sistema.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -376,7 +389,8 @@
     "iteracion": "",
     "id": 21,
     "codigo": "HU-021",
-    "fechaCreacion": "2026-01-03T02:23:26.837Z"
+    "fechaCreacion": "2026-01-03T02:23:26.837Z",
+    "fechaModificacion": "2026-01-03T04:24:05.741Z"
   },
   {
     "titulo": "HU22 – Aprendizaje automático de idiomas",
@@ -384,7 +398,7 @@
     "accion": "aprender inglés y español de forma continua",
     "beneficio": "mejorar la comunicación y comprensión de órdenes en ambos idiomas.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -393,7 +407,7 @@
     "id": 22,
     "codigo": "HU-022",
     "fechaCreacion": "2026-01-03T02:24:34.345Z",
-    "fechaModificacion": "2026-01-03T02:25:22.885Z"
+    "fechaModificacion": "2026-01-03T04:23:37.678Z"
   },
   {
     "titulo": "HU23 – Validación experta del aprendizaje lingüístico",
@@ -401,7 +415,7 @@
     "accion": "entrenar y validar el léxico, la gramática y la fonética del dron",
     "beneficio": "para asegurar una interpretación correcta del lenguaje.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -409,7 +423,8 @@
     "iteracion": "",
     "id": 23,
     "codigo": "HU-023",
-    "fechaCreacion": "2026-01-03T02:27:14.938Z"
+    "fechaCreacion": "2026-01-03T02:27:14.938Z",
+    "fechaModificacion": "2026-01-03T04:23:57.085Z"
   },
   {
     "titulo": "HU24 – Creación de hormiguero virtual",
@@ -417,7 +432,7 @@
     "accion": "crear mi propio hormiguero virtual",
     "beneficio": "simular entornos y observar el comportamiento de las hormigas.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -425,7 +440,8 @@
     "iteracion": "",
     "id": 24,
     "codigo": "HU-024",
-    "fechaCreacion": "2026-01-03T02:36:41.381Z"
+    "fechaCreacion": "2026-01-03T02:36:41.381Z",
+    "fechaModificacion": "2026-01-03T04:24:23.526Z"
   },
   {
     "titulo": "HU25 – Creación y gestión de hormigas",
@@ -433,7 +449,7 @@
     "accion": "crear y gestionar hormigas dentro del hormiguero virtual",
     "beneficio": "experimentar con distintos escenarios y dinámicas del sistema.",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
       "Sin criterios definidos"
     ],
@@ -441,6 +457,7 @@
     "iteracion": "",
     "id": 25,
     "codigo": "HU-025",
-    "fechaCreacion": "2026-01-03T02:37:56.420Z"
+    "fechaCreacion": "2026-01-03T02:37:56.420Z",
+    "fechaModificacion": "2026-01-03T04:24:12.622Z"
   }
 ]

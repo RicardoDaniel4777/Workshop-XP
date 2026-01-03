@@ -1,15 +1,15 @@
 [
   {
-    "id": "standup-1767325264822",
-    "ayer": "Trabajar",
-    "hoy": "Deberes",
-    "bloqueos": "Sueño",
-    "fecha": "2025-12-24T03:41:04.822Z"
+    "id": "standup-1767416998845",
+    "ayer": "Revisión de las historias de usuario y validación de criterios de aceptación.",
+    "hoy": "Realización de estimaciñon de horas destinadas para la elaboración del proyecto.\nConclusión: 1 hora y media por proyecto",
+    "bloqueos": "P: Tiempos que cada uno manejamos para la realización del proyecto.\nP: Falta analizar la categorización de los distintos ",
+    "fecha": "2026-01-03T05:09:58.845Z"
   },
   {
     "id": "standup-1704067200000",
     "ayer": "Repaso del backlog y criterios de aceptación",
-    "hoy": "Definir plan de entregas y velocidad del equipo",
+    "hoy": "Definir historias de usuario",
     "bloqueos": "Pendiente confirmación del cliente sobre prioridades",
     "fecha": "2026-01-01T10:00:00.000Z"
   }

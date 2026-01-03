@@ -65,7 +65,7 @@ export const mockData = {
         },
         {
           id: "planning-game",
-          nombre: "Planning Game",
+          nombre: "Rotaciones",
           tipo: "actividad",
           estado: "completada",
           progreso: 100,

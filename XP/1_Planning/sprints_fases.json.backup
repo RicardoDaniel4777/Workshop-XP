@@ -4,15 +4,35 @@
       "id": "iter-1",
       "nombre": "Sprint 1",
       "fases": {
-        "planificacion": 30,
-        "diseno": 25,
+        "planificacion": 0,
+        "diseno": 0,
         "desarrollo": 0,
         "pruebas": 0
       }
     },
     {
       "id": "iter-2",
-      "nombre": "Sprint 2",
+      "nombre": "Iteración 2 - Core Features",
+      "fases": {
+        "planificacion": 0,
+        "diseno": 0,
+        "desarrollo": 0,
+        "pruebas": 0
+      }
+    },
+    {
+      "id": "iter-3",
+      "nombre": "Iteración 3 - Advanced Features",
+      "fases": {
+        "planificacion": 0,
+        "diseno": 0,
+        "desarrollo": 0,
+        "pruebas": 0
+      }
+    },
+    {
+      "id": "sprint-4",
+      "nombre": "Sprint 4",
       "fases": {
         "planificacion": 30,
         "diseno": 25,
@@ -21,8 +41,8 @@
       }
     },
     {
-      "id": "iter-3",
-      "nombre": "Sprint 3",
+      "id": "sprint-5",
+      "nombre": "Sprint 5",
       "fases": {
         "planificacion": 30,
         "diseno": 25,
@@ -31,5 +51,5 @@
       }
     }
   ],
-  "ultimaActualizacion": "2026-01-03T01:24:24.679Z"
+  "ultimaActualizacion": "2026-01-03T05:06:42.239Z"
 }
