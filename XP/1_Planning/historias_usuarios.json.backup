@@ -72,7 +72,7 @@
     "fechaCreacion": "2026-01-03T01:34:08.812Z"
   },
   {
-    "titulo": "HU-05 – Construcción del autómata determinista",
+    "titulo": "HU05 – Construcción del autómata determinista",
     "rol": "desarrollador",
     "accion": "construir un autómata finito determinista",
     "beneficio": "reconocer el lenguaje del tipo de arsenal",
@@ -87,7 +87,8 @@
     "iteracion": "",
     "id": 5,
     "codigo": "HU-005",
-    "fechaCreacion": "2026-01-03T01:35:23.127Z"
+    "fechaCreacion": "2026-01-03T01:35:23.127Z",
+    "fechaModificacion": "2026-01-03T02:13:29.625Z"
   },
   {
     "titulo": "HU06 – Validación del tipo de arsenal",
@@ -166,7 +167,7 @@
   {
     "titulo": "HU10 – Transformación de HLarva a TIPO_HORMIGA",
     "rol": "la KGD ",
-    "accion": "ue la HLarva se transforme en su TIPO_HORMIGA al consumir ALIMENTO",
+    "accion": "que la HLarva se transforme en su TIPO_HORMIGA al consumir ALIMENTO",
     "beneficio": "que complete su proceso de evolución",
     "prioridad": "Media",
     "storyPoints": 0,
@@ -179,7 +180,8 @@
     "iteracion": "",
     "id": 10,
     "codigo": "HU-010",
-    "fechaCreacion": "2026-01-03T01:46:37.001Z"
+    "fechaCreacion": "2026-01-03T01:46:37.001Z",
+    "fechaModificacion": "2026-01-03T02:14:24.256Z"
   },
   {
     "titulo": "HU11 – Supervivencia del TIPO_HORMIGA según alimento",
@@ -241,7 +243,7 @@
     "titulo": "HU14 – Mostrar coordenada donde explota la BBA",
     "rol": "la KGD ",
     "accion": "que la acción de “Buscar” muestre la coordenada donde la bomba BBA explota",
-    "beneficio": "se identifique claramente el punto de ataque cuando el resultado sea True",
+    "beneficio": "que se identifique claramente el punto de ataque cuando el resultado sea True",
     "prioridad": "Media",
     "storyPoints": 0,
     "criteriosAceptacion": [
@@ -253,7 +255,8 @@
     "iteracion": "",
     "id": 14,
     "codigo": "HU-014",
-    "fechaCreacion": "2026-01-03T01:56:19.512Z"
+    "fechaCreacion": "2026-01-03T01:56:19.512Z",
+    "fechaModificacion": "2026-01-03T02:15:07.801Z"
   },
   {
     "titulo": "HU15 – Composición de extremidades del AntCiberDron",
@@ -308,5 +311,136 @@
     "id": 17,
     "codigo": "HU-017",
     "fechaCreacion": "2026-01-03T02:01:51.091Z"
+  },
+  {
+    "titulo": "HU18 – Variación de potencia del láser según energía",
+    "rol": "la KGD ",
+    "accion": "que la potencia del láser varíe según la energía de la fuente de poder",
+    "beneficio": "que el comportamiento del láser dependa del nivel de energía disponible",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Dado que el láser está equipado, cuando cambia la energía de la fuente de poder, la potencia del láser debe actualizarse.",
+      "Con energía baja, la potencia del láser debe ser menor que con energía alta.",
+      "Si la energía es 0 (o insuficiente), el láser debe quedar sin potencia (0) o no utilizable."
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 18,
+    "codigo": "HU-018",
+    "fechaCreacion": "2026-01-03T02:02:57.653Z"
+  },
+  {
+    "titulo": "HU19 – Gestión de energía del AnticiberDron",
+    "rol": "Usuario",
+    "accion": "que el AnticiberDron varíe su energía según la fuente de poder,",
+    "beneficio": "optimizar su rendimiento y evitar fallos durante la misión.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 19,
+    "codigo": "HU-019",
+    "fechaCreacion": "2026-01-03T02:21:31.903Z"
+  },
+  {
+    "titulo": "HU20 – Vuelo asistido por fuente de poder",
+    "rol": "operador del AnticiberDron",
+    "accion": "que el dron pueda volar usando energía de la fuente de poder",
+    "beneficio": "garantizar estabilidad y continuidad en operaciones prolongadas.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 20,
+    "codigo": "HU-020",
+    "fechaCreacion": "2026-01-03T02:22:36.911Z"
+  },
+  {
+    "titulo": "HU21 – Recarga y reemplazo de la fuente de poder",
+    "rol": "técnico de mantenimiento",
+    "accion": "que la fuente de poder sea recargable y reemplazable con asistencia de LIA",
+    "beneficio": "reducir tiempos de inactividad y mejorar la eficiencia del sistema.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 21,
+    "codigo": "HU-021",
+    "fechaCreacion": "2026-01-03T02:23:26.837Z"
+  },
+  {
+    "titulo": "HU22 – Aprendizaje automático de idiomas",
+    "rol": "sistema AnticiberDron",
+    "accion": "aprender inglés y español de forma continua",
+    "beneficio": "mejorar la comunicación y comprensión de órdenes en ambos idiomas.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 22,
+    "codigo": "HU-022",
+    "fechaCreacion": "2026-01-03T02:24:34.345Z",
+    "fechaModificacion": "2026-01-03T02:25:22.885Z"
+  },
+  {
+    "titulo": "HU23 – Validación experta del aprendizaje lingüístico",
+    "rol": "experto bilingüe (inglés–español)",
+    "accion": "entrenar y validar el léxico, la gramática y la fonética del dron",
+    "beneficio": "para asegurar una interpretación correcta del lenguaje.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 23,
+    "codigo": "HU-023",
+    "fechaCreacion": "2026-01-03T02:27:14.938Z"
+  },
+  {
+    "titulo": "HU24 – Creación de hormiguero virtual",
+    "rol": "usuario de la KGD",
+    "accion": "crear mi propio hormiguero virtual",
+    "beneficio": "simular entornos y observar el comportamiento de las hormigas.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 24,
+    "codigo": "HU-024",
+    "fechaCreacion": "2026-01-03T02:36:41.381Z"
+  },
+  {
+    "titulo": "HU25 – Creación y gestión de hormigas",
+    "rol": "usuario de la KGD",
+    "accion": "crear y gestionar hormigas dentro del hormiguero virtual",
+    "beneficio": "experimentar con distintos escenarios y dinámicas del sistema.",
+    "prioridad": "Media",
+    "storyPoints": 0,
+    "criteriosAceptacion": [
+      "Sin criterios definidos"
+    ],
+    "estado": "pendiente",
+    "iteracion": "",
+    "id": 25,
+    "codigo": "HU-025",
+    "fechaCreacion": "2026-01-03T02:37:56.420Z"
   }
 ]
