@@ -13,10 +13,10 @@ export const mockData = {
 
   // Roles del equipo (siempre 2 personas por rol)
   roles: [
-    { nombre: "Cliente", personas: ["María García", "Carlos Ruiz"] },
-    { nombre: "Desarrolladores", personas: ["Ana López", "Pedro Sánchez"] },
-    { nombre: "Coach XP", personas: ["Laura Martínez", "Juan Pérez"] },
-    { nombre: "Tracker", personas: ["Sofia Torres", "Miguel Ángel"] }
+    { nombre: "Cliente", personas: ["Ricardo Villarreal"] },
+    { nombre: "Desarrolladores", personas: ["Cristian Robles", "Anthony Chiluiza"] },
+    { nombre: "Coach XP", personas: ["Ricardo Villarreal"] },
+    { nombre: "Tester", personas: ["Julio Arrobo", "Ricardo Villarreal"] }
   ],
 
   // 4 Fases de XP con sus actividades
@@ -37,7 +37,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Definición y escritura de historias de usuario desde la perspectiva del cliente.",
-          roles: ["María García", "Ana López"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["user-stories"],
           enlace: "/actividad/historias-usuario"
         },
@@ -48,7 +48,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Planificación de releases y entregas incrementales.",
-          roles: ["Carlos Ruiz", "Laura Martínez"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["release-plan"],
           enlace: "/actividad/plan-entregas"
         },
@@ -59,7 +59,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Definición de iteraciones de 1-2 semanas.",
-          roles: ["Laura Martínez", "Juan Pérez"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["iteration-plan"],
           enlace: "/actividad/iteraciones-cortas"
         },
@@ -70,7 +70,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Juego de planificación colaborativa entre cliente y desarrolladores.",
-          roles: ["María García", "Pedro Sánchez"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["planning-cards"],
           enlace: "/actividad/planning-game"
         },
@@ -81,7 +81,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Medición de la velocidad del equipo en story points.",
-          roles: ["Sofia Torres", "Miguel Ángel"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["velocity-chart"],
           enlace: "/actividad/velocidad-proyecto"
         },
@@ -92,7 +92,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 75,
           descripcion: "Reuniones diarias de sincronización del equipo para compartir avances, planes y bloqueos.",
-          roles: ["Laura Martínez", "Ana López", "Pedro Sánchez"],
+          roles: ["Ricardo Villarreal", "Cristian Robles", "Anthony Chiluiza", "Julio Arrobo"],
           artefactos: ["standup-cards"],
           enlace: "/actividad/reuniones"
         }
