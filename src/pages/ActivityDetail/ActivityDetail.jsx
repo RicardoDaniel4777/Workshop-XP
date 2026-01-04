@@ -5,6 +5,7 @@ import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import HistoriaUsuarioModal from '../../components/HistoriaUsuarioModal/HistoriaUsuarioModal';
 import { mockData } from '../../data/mockData';
 import SystemMetaphor from '../../components/SystemMetaphor/SystemMetaphor';
+import RefactorLog from '../../components/RefactorLog/RefactorLog';
 import './ActivityDetail.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
@@ -1102,6 +1103,12 @@ function suma(...numeros) {
         {activityId === 'metafora-sistema' && (
           <div className="content-card">
             <SystemMetaphor />
+          </div>
+        )}
+
+        {activityId === 'refactorizacion' && (
+          <div className="content-card">
+            <RefactorLog />
           </div>
         )}
 

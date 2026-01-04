@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": 1767569694056,
+      "fecha": "2026-01-29",
+      "clase": "Sistema",
+      "descripcion": "asdas",
+      "beneficio": "asdasd",
+      "estado": "Completada"
+    },
+    {
+      "id": 1767569680255,
+      "fecha": "2026-01-14",
+      "clase": "AntiCiberDron",
+      "descripcion": "jaja",
+      "beneficio": "jajaj",
+      "estado": "Completada"
+    }
+  ]
+}

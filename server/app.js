@@ -10,6 +10,7 @@ const reunionesRouter = require('./routes/reuniones');
 const rotacionesRouter = require('./routes/rotaciones');
 const tarjetasCRCRouter = require('./routes/tarjetasCRC');
 const metaforaSistemaRouter = require('./routes/metaforaSistema');
+const refactorizacionesRouter = require('./routes/refactorizaciones');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/reuniones', reunionesRouter);
 app.use('/api/rotaciones', rotacionesRouter);
 app.use('/api/tarjetas-crc', tarjetasCRCRouter);
 app.use('/api/metafora-sistema', metaforaSistemaRouter);
+app.use('/api/refactorizaciones', refactorizacionesRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -61,6 +63,8 @@ app.listen(PORT, () => {
 ║  • GET/POST   /api/reuniones                              ║
 ║  • GET/POST   /api/rotaciones                             ║
 ║  • GET/POST   /api/tarjetas-crc                           ║
+║  • GET/PUT    /api/metafora-sistema                       ║
+║  • GET/PUT    /api/refactorizaciones                      ║
 ║                                                            ║
 ║  Health Check: GET /api/health                            ║
 ╚════════════════════════════════════════════════════════════╝
