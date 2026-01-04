@@ -31,7 +31,7 @@
       }
     },
     {
-      "id": "sprint-4",
+      "id": "iter-4",
       "nombre": "Sprint 4",
       "fases": {
         "planificacion": 30,
@@ -41,7 +41,7 @@
       }
     },
     {
-      "id": "sprint-5",
+      "id": "iter-5",
       "nombre": "Sprint 5",
       "fases": {
         "planificacion": 30,
@@ -51,5 +51,5 @@
       }
     }
   ],
-  "ultimaActualizacion": "2026-01-03T05:06:42.239Z"
+  "ultimaActualizacion": "2026-01-04T22:16:11.711Z"
 }

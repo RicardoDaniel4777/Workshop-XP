@@ -1,0 +1,22 @@
+{
+  "diseno": {
+    "personas": [
+      "Anthony Chiluiza"
+    ],
+    "rotas": {
+      "Anthony Chiluiza": {
+        "iter-1": "Navigator",
+        "iter-3": "Navigator",
+        "iter-5": "Navigator"
+      }
+    }
+  },
+  "desarrollo": {
+    "personas": [],
+    "rotas": {}
+  },
+  "pruebas": {
+    "personas": [],
+    "rotas": {}
+  }
+}

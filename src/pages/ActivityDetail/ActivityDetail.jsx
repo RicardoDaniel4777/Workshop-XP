@@ -3,7 +3,10 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useXP } from '../../context/XPContext';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import HistoriaUsuarioModal from '../../components/HistoriaUsuarioModal/HistoriaUsuarioModal';
+import { mockData } from '../../data/mockData';
 import './ActivityDetail.css';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
 
 const ActivityDetail = () => {
   const { activityId } = useParams();
@@ -33,7 +36,12 @@ const ActivityDetail = () => {
   const [historiaEditando, setHistoriaEditando] = useState(null);
   const [velocidadManual, setVelocidadManual] = useState(null);
   const [tiempoDisponible, setTiempoDisponible] = useState(80);
-  const [rotaciones, setRotaciones] = useState({});
+  const [rotaciones, setRotaciones] = useState({ diseno: {}, desarrollo: {}, pruebas: {} });
+  const [areaSelections, setAreaSelections] = useState({
+    diseno: [null, null],
+    desarrollo: [null, null],
+    pruebas: [null, null]
+  });
   const [standupForm, setStandupForm] = useState({ ayer: '', hoy: '', bloqueos: '' });
   
   const actividadConFase = obtenerActividad(activityId);
@@ -66,10 +74,37 @@ const ActivityDetail = () => {
     });
   }, [iteraciones, numeroSprints]);
 
-  const devsEnProyecto = useMemo(() => {
-    const equipos = iteraciones.flatMap(iter => iter.equipo || []);
-    return Array.from(new Set(equipos));
-  }, [iteraciones]);
+  // Integrantes provenientes de la actividad planning-game en mockData
+  const planningGameMembers = useMemo(() => {
+    const actividadPG = mockData.fases
+      .flatMap(f => f.actividades || [])
+      .find(act => act.id === 'planning-game');
+    return Array.from(new Set(actividadPG?.roles || []));
+  }, []);
+
+  const rotacionAreas = useMemo(() => ([
+    { key: 'diseno', titulo: 'Rotaciones Diseño' },
+    { key: 'desarrollo', titulo: 'Rotaciones Desarrollo' },
+    { key: 'pruebas', titulo: 'Rotaciones Pruebas' }
+  ]), []);
+
+  // Inicializar selección de 2 integrantes por área con los primeros del planning-game
+  useEffect(() => {
+    if (!planningGameMembers.length) return;
+    setAreaSelections(prev => {
+      const next = { ...prev };
+      rotacionAreas.forEach(area => {
+        const actual = prev[area.key] || [];
+        if (!actual[0] || !actual[1]) {
+          next[area.key] = [planningGameMembers[0] || null, planningGameMembers[1] || null].filter(Boolean);
+          // Asegurar longitud 2
+          if (next[area.key].length === 1) next[area.key].push(null);
+          if (next[area.key].length === 0) next[area.key] = [null, null];
+        }
+      });
+      return next;
+    });
+  }, [planningGameMembers, rotacionAreas]);
 
   const defaultFases = () => ({
     planificacion: 30,
@@ -78,18 +113,69 @@ const ActivityDetail = () => {
     pruebas: 0
   });
 
+  // Cargar rotaciones desde el backend y asegurar estructura con áreas/sprints/personas
   useEffect(() => {
-    setRotaciones(prev => {
-      const next = {};
-      devsEnProyecto.forEach(dev => {
-        next[dev] = {};
-        sprintCatalog.forEach(sprint => {
-          next[dev][sprint.id] = prev[dev]?.[sprint.id] || 'Driver';
+    const rolesDisponibles = ['Driver', 'Navigator'];
+
+    const mergeWithDefaults = (data) => {
+      const base = {
+        diseno: { personas: [null, null], rotas: {} },
+        desarrollo: { personas: [null, null], rotas: {} },
+        pruebas: { personas: [null, null], rotas: {} }
+      };
+
+      const merged = {
+        ...base,
+        ...(data || {})
+      };
+
+      rotacionAreas.forEach(area => {
+        const seleccionados = (merged[area.key]?.personas?.length ? merged[area.key].personas : [null, null]).slice(0, 2);
+
+        const areaData = merged[area.key]?.rotas || {};
+        const nextAreaRotas = {};
+
+        seleccionados.filter(Boolean).forEach(persona => {
+          nextAreaRotas[persona] = { ...(areaData[persona] || {}) };
+          sprintCatalog.forEach(sprint => {
+            nextAreaRotas[persona][sprint.id] = nextAreaRotas[persona][sprint.id] || rolesDisponibles[0];
+          });
         });
+
+        merged[area.key] = {
+          personas: [seleccionados[0] || null, seleccionados[1] || null],
+          rotas: nextAreaRotas
+        };
       });
-      return next;
-    });
-  }, [devsEnProyecto, sprintCatalog]);
+
+      return merged;
+    };
+
+    const fetchRotaciones = async () => {
+      try {
+        const resp = await fetch(`${API_BASE_URL}/rotaciones`);
+        if (!resp.ok) throw new Error('No se pudieron cargar rotaciones');
+        const data = await resp.json();
+        setRotaciones(mergeWithDefaults(data));
+        // Sincronizar selección local con lo que viene del backend
+        rotacionAreas.forEach(area => {
+          setAreaSelections(prev => ({
+            ...prev,
+            [area.key]: [
+              data?.[area.key]?.personas?.[0] || null,
+              data?.[area.key]?.personas?.[1] || null
+            ]
+          }));
+        });
+      } catch (err) {
+        // Si falla, usa estructura por defecto para no romper la UI
+        setRotaciones(prev => mergeWithDefaults(prev));
+      }
+    };
+
+    fetchRotaciones();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [API_BASE_URL, sprintCatalog]);
 
   useEffect(() => {
     // Inicializar releasePlan y sprintFases cuando cambia el catálogo de sprints
@@ -191,14 +277,91 @@ const ActivityDetail = () => {
 
   const velocidadEquipo = velocidadManual ?? velocidadSugerida;
 
-  const actualizarRotacion = (persona, sprintId, rol) => {
-    setRotaciones(prev => ({
-      ...prev,
-      [persona]: {
-        ...(prev[persona] || {}),
-        [sprintId]: rol
+  const persistPersonasArea = async (areaKey, personas) => {
+    try {
+      await fetch(`${API_BASE_URL}/rotaciones/personas`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ area: areaKey, personas })
+      });
+    } catch (error) {
+      console.error('Error guardando selección de personas', error);
+    }
+  };
+
+  const actualizarSeleccionPersona = (areaKey, slotIndex, persona) => {
+    setAreaSelections(prev => {
+      const current = [...(prev[areaKey] || [null, null])];
+
+      // Evitar duplicados entre los dos slots
+      if (persona && current.some((p, idx) => p === persona && idx !== slotIndex)) {
+        current[slotIndex] = persona;
+        current[1 - slotIndex] = current[1 - slotIndex] === persona ? null : current[1 - slotIndex];
+      } else {
+        current[slotIndex] = persona || null;
       }
-    }));
+
+      const personasFiltradas = current.filter(Boolean).slice(0, 2);
+
+      // Persistir selección
+      persistPersonasArea(areaKey, personasFiltradas);
+
+      // Sincronizar rotaciones en memoria para reflejar de inmediato
+      setRotaciones(prevRot => {
+        const next = { ...prevRot };
+        const rolesDisponibles = ['Driver', 'Navigator'];
+
+        if (!next[areaKey]) {
+          next[areaKey] = { personas: [null, null], rotas: {} };
+        }
+
+        next[areaKey].personas = [personasFiltradas[0] || null, personasFiltradas[1] || null];
+
+        const currentRotas = next[areaKey].rotas || {};
+        const newRotas = {};
+        personasFiltradas.forEach(p => {
+          newRotas[p] = { ...(currentRotas[p] || {}) };
+          sprintCatalog.forEach(s => {
+            newRotas[p][s.id] = newRotas[p][s.id] || rolesDisponibles[0];
+          });
+        });
+        next[areaKey].rotas = newRotas;
+
+        return next;
+      });
+
+      return { ...prev, [areaKey]: current };
+    });
+  };
+
+  const actualizarRotacion = async (areaKey, persona, sprintId, rol) => {
+    // Optimista en UI
+    setRotaciones(prev => {
+      const next = { ...prev };
+      const rolesDisponibles = ['Driver', 'Navigator'];
+
+      if (!next[areaKey]) {
+        next[areaKey] = { personas: [null, null], rotas: {} };
+      }
+
+      const currentRotas = next[areaKey].rotas || {};
+      const newRotas = { ...currentRotas };
+      newRotas[persona] = { ...(currentRotas[persona] || {}) };
+      newRotas[persona][sprintId] = rol || rolesDisponibles[0];
+
+      next[areaKey].rotas = newRotas;
+      return next;
+    });
+
+    try {
+      await fetch(`${API_BASE_URL}/rotaciones/asignar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ area: areaKey, persona, sprintId, rol })
+      });
+    } catch (error) {
+      console.error('Error guardando rotación', error);
+    }
   };
 
   const agregarStandupLocal = () => {
@@ -441,45 +604,80 @@ const ActivityDetail = () => {
      </div>
    );
 
-  const renderRotaciones = () => (
-    <div className="plan-card rotations-card">
-      <h3>Rotaciones (Pair Programming)</h3>
-      <p className="plan-card-subtitle">Asigna rol por sprint para mantener rotación saludable.</p>
-      <div className="rotaciones-table-wrapper">
-        <table className="rotaciones-table">
-          <thead>
-            <tr>
-              <th>Persona</th>
-              {sprintCatalog.map(sprint => (
-                <th key={sprint.id}>{sprint.nombre}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {devsEnProyecto.map(persona => (
-              <tr key={persona}>
-                <td className="persona-col">{persona}</td>
+  const renderRotacionesArea = (areaKey, titulo) => {
+    const areaData = rotaciones[areaKey]?.rotas || {};
+    const rolesDisponibles = ['Driver', 'Navigator'];
+    const seleccionados = (rotaciones[areaKey]?.personas || areaSelections[areaKey] || []).filter(Boolean);
+
+    return (
+      <div className="plan-card rotations-card" key={areaKey}>
+        <h3>{titulo}</h3>
+        <p className="plan-card-subtitle">Asigna Driver/Navigator por sprint sin bloquear otras áreas.</p>
+
+        <div className="rotaciones-selectores">
+          {[0, 1].map(idx => (
+            <label key={idx} className="rotacion-selector">
+              <span>Integrante {idx + 1}</span>
+              <select
+                value={(rotaciones[areaKey]?.personas || areaSelections[areaKey] || [])[idx] || ''}
+                onChange={(event) => actualizarSeleccionPersona(areaKey, idx, event.target.value || null)}
+              >
+                <option value="">-- Seleccionar --</option>
+                {planningGameMembers.map(persona => (
+                  <option key={persona} value={persona}>{persona}</option>
+                ))}
+              </select>
+            </label>
+          ))}
+        </div>
+
+        <div className="rotaciones-table-wrapper">
+          <table className="rotaciones-table">
+            <thead>
+              <tr>
+                <th>Persona</th>
                 {sprintCatalog.map(sprint => (
-                  <td key={sprint.id}>
-                    <select
-                      value={rotaciones[persona]?.[sprint.id] || 'Driver'}
-                      onChange={(event) => actualizarRotacion(persona, sprint.id, event.target.value)}
-                    >
-                      <option value="Driver">Driver</option>
-                      <option value="Navigator">Navigator</option>
-                      <option value="QA">QA</option>
-                      <option value="Soporte">Soporte</option>
-                    </select>
-                  </td>
+                  <th key={sprint.id}>{sprint.nombre}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {devsEnProyecto.length === 0 && (
-          <p className="empty-hu">Agrega integrantes al equipo para gestionar rotaciones.</p>
-        )}
+            </thead>
+            <tbody>
+              {seleccionados.length === 0 && (
+                <tr>
+                  <td colSpan={sprintCatalog.length + 1} className="empty-hu">Selecciona dos integrantes para esta área.</td>
+                </tr>
+              )}
+              {seleccionados.map(persona => (
+                <tr key={persona}>
+                  <td className="persona-col">{persona}</td>
+                  {sprintCatalog.map(sprint => (
+                    <td key={sprint.id}>
+                      <select
+                        value={areaData[persona]?.[sprint.id] || rolesDisponibles[0]}
+                        onChange={(event) => actualizarRotacion(areaKey, persona, sprint.id, event.target.value)}
+                      >
+                        {rolesDisponibles.map(rol => (
+                          <option key={rol} value={rol}>{rol}</option>
+                        ))}
+                      </select>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {planningGameMembers.length === 0 && (
+            <p className="empty-hu">No hay integrantes en planning-game.</p>
+          )}
+        </div>
       </div>
+    );
+  };
+
+  // Renderiza las tres instancias independientes de rotaciones (Diseño, Desarrollo, Pruebas)
+  const renderRotaciones = () => (
+    <div className="rotaciones-grid">
+      {rotacionAreas.map(area => renderRotacionesArea(area.key, area.titulo))}
     </div>
   );
 

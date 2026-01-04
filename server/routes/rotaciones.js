@@ -22,13 +22,27 @@ router.get('/', (req, res) => {
  */
 router.post('/asignar', (req, res) => {
   try {
-    const { persona, sprintId, rol } = req.body;
+    const { area = 'diseno', persona, sprintId, rol } = req.body;
     
     if (!persona || !sprintId || !rol) {
       return res.status(400).json({ error: 'Campos requeridos: persona, sprintId, rol' });
     }
     
-    const rotas = rotaciones.asignarRotacion(persona, sprintId, rol);
+    const rotas = rotaciones.asignarRotacion(area, persona, sprintId, rol);
+    res.json(rotas);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/rotaciones/personas
+ * Actualizar las dos personas seleccionadas para un área
+ */
+router.post('/personas', (req, res) => {
+  try {
+    const { area = 'diseno', personas = [] } = req.body;
+    const rotas = rotaciones.actualizarPersonasArea(area, personas);
     res.json(rotas);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -41,7 +55,8 @@ router.post('/asignar', (req, res) => {
  */
 router.get('/persona/:persona', (req, res) => {
   try {
-    const rota = rotaciones.obtenerRotacionPersona(req.params.persona);
+    const area = req.query.area || 'diseno';
+    const rota = rotaciones.obtenerRotacionPersona(area, req.params.persona);
     res.json(rota);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -54,7 +69,8 @@ router.get('/persona/:persona', (req, res) => {
  */
 router.get('/sprint/:sprintId', (req, res) => {
   try {
-    const rotas = rotaciones.obtenerRotacionesSprint(req.params.sprintId);
+    const area = req.query.area || 'diseno';
+    const rotas = rotaciones.obtenerRotacionesSprint(area, req.params.sprintId);
     res.json(rotas);
   } catch (error) {
     res.status(500).json({ error: error.message });
