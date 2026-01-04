@@ -1,0 +1,155 @@
+.crc-card {
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  max-width: 450px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.crc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.crc-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 20px;
+  padding-right: 130px; /* espacio para los botones */
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: center;
+  border-bottom: 2px solid #333;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+}
+
+.crc-card-title {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.crc-card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.crc-card-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.crc-card-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.crc-card-btn.edit {
+  background: rgba(52, 152, 219, 0.3);
+}
+
+.crc-card-btn.delete {
+  background: rgba(231, 76, 60, 0.3);
+}
+
+.crc-card-btn.edit:hover {
+  background: rgba(52, 152, 219, 0.5);
+}
+
+.crc-card-btn.delete:hover {
+  background: rgba(231, 76, 60, 0.5);
+}
+
+.crc-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 250px;
+}
+
+.crc-card-section {
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.crc-card-section:last-child {
+  border-right: none;
+}
+
+.crc-card-section-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 6px;
+}
+
+.crc-card-section-content {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.crc-card-section-content:empty::before {
+  content: 'Sin información';
+  color: #999;
+  font-style: italic;
+}
+
+.crc-card-footer {
+  padding: 10px 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: right;
+  border-radius: 0 0 6px 6px;
+}
+
+@media (max-width: 768px) {
+  .crc-card {
+    max-width: 100%;
+  }
+  
+  .crc-card-body {
+    grid-template-columns: 1fr;
+  }
+  
+  .crc-card-section {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .crc-card-section:last-child {
+    border-bottom: none;
+  }
+}

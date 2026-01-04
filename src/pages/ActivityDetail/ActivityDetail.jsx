@@ -4,6 +4,7 @@ import { useXP } from '../../context/XPContext';
 import ProgressBar from '../../components/ProgressBar/ProgressBar';
 import HistoriaUsuarioModal from '../../components/HistoriaUsuarioModal/HistoriaUsuarioModal';
 import { mockData } from '../../data/mockData';
+import SystemMetaphor from '../../components/SystemMetaphor/SystemMetaphor';
 import './ActivityDetail.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
@@ -915,7 +916,16 @@ function suma(...numeros) {
     <div className="activity-detail">
       <div className="activity-header">
         <div className="header-top">
-          <button onClick={() => navigate(-1)} className="back-button">
+          <button
+            onClick={() => {
+              if (activityId === 'tarjetas-crc') {
+                navigate('/');
+              } else {
+                navigate(-1);
+              }
+            }}
+            className="back-button"
+          >
             ← Volver
           </button>
           <div className="header-badges">
@@ -1089,10 +1099,22 @@ function suma(...numeros) {
           {getContenidoDetallado()}
         </div>
 
+        {activityId === 'metafora-sistema' && (
+          <div className="content-card">
+            <SystemMetaphor />
+          </div>
+        )}
+
         {/* Acciones */}
         <div className="content-card">
           <h2 className="card-title">Acciones Disponibles</h2>
           <div className="actions-grid">
+            {activityId === 'tarjetas-crc' && (
+              <Link to="/tarjetas-crc" className="action-button">
+                <span className="action-icon">🎴</span>
+                <span>Abrir gestor CRC</span>
+              </Link>
+            )}
             <Link to="/artefactos" className="action-button">
               <span className="action-icon">📄</span>
               <span>Ver Artefactos</span>

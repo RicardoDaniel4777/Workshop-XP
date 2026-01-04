@@ -1,0 +1,126 @@
+.metafora {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #0f172a;
+}
+
+.metafora-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.metafora-status {
+  font-size: 0.95rem;
+  color: #475569;
+  background: #eef2ff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5f5;
+}
+
+.metafora-error {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.metafora-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.metafora-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+.metafora-card textarea {
+  width: 100%;
+  min-height: 140px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  resize: vertical;
+  background: #f8fafc;
+}
+
+.metafora-table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.metafora-btn {
+  border: 1px solid #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.metafora-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.metafora-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metafora-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.metafora-table-header {
+  color: #475569;
+  font-weight: 600;
+}
+
+.metafora-table-row input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  background: #f8fafc;
+}
+
+.metafora-empty {
+  text-align: center;
+  padding: 0.75rem;
+  color: #94a3b8;
+  font-style: italic;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .metafora-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .metafora-table-row {
+    grid-template-columns: 1fr;
+  }
+  .metafora-table-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -8,6 +8,7 @@ import ActivityDetail from './pages/ActivityDetail/ActivityDetail';
 import Iteraciones from './pages/Iteraciones/Iteraciones';
 import Calendario from './pages/Calendario/Calendario';
 import Artefactos from './pages/Artefactos/Artefactos';
+import TarjetasCRC from './pages/TarjetasCRC/TarjetasCRC';
 import './App.css';
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/fases" element={<FasesXP />} />
-              <Route path="/actividad/:activityId" element={<ActivityDetail />} />
               <Route path="/iteraciones" element={<Iteraciones />} />
               <Route path="/calendario" element={<Calendario />} />
               <Route path="/artefactos" element={<Artefactos />} />
+              <Route path="/tarjetas-crc" element={<TarjetasCRC />} />
+              <Route path="/actividad/:activityId" element={<ActivityDetail />} />
             </Routes>
           </Layout>
         </Router>

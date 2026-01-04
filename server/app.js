@@ -8,6 +8,8 @@ const planRouter = require('./routes/plan');
 const sprintsFasesRouter = require('./routes/sprintsFases');
 const reunionesRouter = require('./routes/reuniones');
 const rotacionesRouter = require('./routes/rotaciones');
+const tarjetasCRCRouter = require('./routes/tarjetasCRC');
+const metaforaSistemaRouter = require('./routes/metaforaSistema');
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.use('/api/plan', planRouter);
 app.use('/api/sprints-fases', sprintsFasesRouter);
 app.use('/api/reuniones', reunionesRouter);
 app.use('/api/rotaciones', rotacionesRouter);
+app.use('/api/tarjetas-crc', tarjetasCRCRouter);
+app.use('/api/metafora-sistema', metaforaSistemaRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -56,6 +60,7 @@ app.listen(PORT, () => {
 ║  • GET/POST   /api/sprints-fases                          ║
 ║  • GET/POST   /api/reuniones                              ║
 ║  • GET/POST   /api/rotaciones                             ║
+║  • GET/POST   /api/tarjetas-crc                           ║
 ║                                                            ║
 ║  Health Check: GET /api/health                            ║
 ╚════════════════════════════════════════════════════════════╝

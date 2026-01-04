@@ -37,13 +37,24 @@
     "iter-4": {
       "id": "iter-4",
       "nombre": "Sprint 4",
-      "historias": []
+      "historias": [
+        "HU-020",
+        "HU-019",
+        "HU-016",
+        "HU-017"
+      ]
     },
     "iter-5": {
       "id": "iter-5",
       "nombre": "Sprint 5",
-      "historias": []
+      "historias": [
+        "HU-025",
+        "HU-024",
+        "HU-023",
+        "HU-022",
+        "HU-021"
+      ]
     }
   },
-  "ultimaActualizacion": "2026-01-03T04:45:49.452Z"
+  "ultimaActualizacion": "2026-01-04T22:56:42.403Z"
 }

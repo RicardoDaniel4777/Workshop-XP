@@ -114,7 +114,7 @@ export const mockData = {
           estado: "completada",
           progreso: 100,
           descripcion: "Diseño más simple que pueda funcionar (YAGNI - You Aren't Gonna Need It).",
-          roles: ["Ana López", "Pedro Sánchez"],
+          roles: ["Anthony Chiluiza", "Ricardo Villareal"],
           artefactos: ["design-docs"],
           enlace: "/actividad/diseno-simple"
         },
@@ -125,7 +125,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 75,
           descripcion: "Uso de metáforas para describir el sistema de forma comprensible.",
-          roles: ["Laura Martínez", "Carlos Ruiz"],
+          roles: ["Anthony Chiluiza", "Ricardo Villareal"],
           artefactos: ["system-metaphor"],
           enlace: "/actividad/metafora-sistema"
         },
@@ -136,7 +136,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 50,
           descripcion: "Tarjetas Clase-Responsabilidad-Colaboración para diseño orientado a objetos.",
-          roles: ["Ana López", "Juan Pérez"],
+          roles: ["Anthony Chiluiza", "Ricardo Villareal"],
           artefactos: ["crc-cards"],
           enlace: "/actividad/tarjetas-crc"
         },
@@ -147,7 +147,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 40,
           descripcion: "Mejora continua del diseño del código sin cambiar su funcionalidad.",
-          roles: ["Pedro Sánchez", "Ana López"],
+          roles: ["Anthony Chiluiza", "Ricardo Villareal"],
           artefactos: ["refactoring-log"],
           enlace: "/actividad/refactorizacion"
         }
@@ -169,7 +169,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 60,
           descripcion: "Dos programadores trabajando en la misma estación de trabajo.",
-          roles: ["Ana López", "Pedro Sánchez"],
+          roles: ["Cristian Robles", "Anthony Chiluiza"],
           artefactos: ["pair-rotation"],
           enlace: "/actividad/programacion-parejas"
         },
@@ -180,7 +180,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 55,
           descripcion: "Escribir primero las pruebas, luego el código que las pasa.",
-          roles: ["Pedro Sánchez", "Ana López"],
+          roles: ["Cristian Robles", "Anthony Chiluiza"],
           artefactos: ["unit-tests"],
           enlace: "/actividad/tdd"
         },
@@ -191,7 +191,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 40,
           descripcion: "Integración del código varias veces al día.",
-          roles: ["Miguel Ángel", "Juan Pérez"],
+          roles: ["Cristian Robles", "Anthony Chiluiza"],
           artefactos: ["ci-pipeline"],
           enlace: "/actividad/integracion-continua"
         },
@@ -202,7 +202,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 30,
           descripcion: "Convenciones de codificación compartidas por el equipo.",
-          roles: ["Laura Martínez", "Ana López"],
+          roles: ["Cristian Robles", "Anthony Chiluiza"],
           artefactos: ["coding-standards"],
           enlace: "/actividad/estandares-codigo"
         }
@@ -224,7 +224,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 30,
           descripcion: "Pruebas definidas por el cliente para validar historias de usuario.",
-          roles: ["María García", "Carlos Ruiz"],
+          roles: ["Cristian Robles", "Julio Arrobo"],
           artefactos: ["acceptance-tests"],
           enlace: "/actividad/pruebas-aceptacion"
         },
@@ -235,7 +235,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 20,
           descripcion: "Cliente disponible todo el tiempo para resolver dudas.",
-          roles: ["María García", "Ana López"],
+          roles: ["Cristian Robles", "Julio Arrobo"],
           artefactos: ["client-feedback"],
           enlace: "/actividad/cliente-onsite"
         },
@@ -246,7 +246,7 @@ export const mockData = {
           estado: "pendiente",
           progreso: 0,
           descripcion: "Entregas frecuentes de versiones funcionales del software.",
-          roles: ["Laura Martínez", "Miguel Ángel"],
+          roles: ["Cristian Robles", "Julio Arrobo"],
           artefactos: ["release-notes"],
           enlace: "/actividad/releases-pequenos"
         },
@@ -257,7 +257,7 @@ export const mockData = {
           estado: "en-progreso",
           progreso: 10,
           descripcion: "Trabajar a un ritmo que pueda mantenerse indefinidamente.",
-          roles: ["Laura Martínez", "Juan Pérez"],
+          roles: ["Cristian Robles", "Julio Arrobo"],
           artefactos: ["burndown-chart"],
           enlace: "/actividad/ritmo-sostenible"
         }
