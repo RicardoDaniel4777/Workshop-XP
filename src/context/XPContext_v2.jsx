@@ -3,7 +3,8 @@ import { mockData, calcularProgresoGeneral, obtenerActividad, obtenerEstadistica
 
 const XPContext = createContext();
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+// En desarrollo usa localhost:3001, en producción usa rutas relativas (nginx proxy)
+const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
 
 export const useXP = () => {
   const context = useContext(XPContext);

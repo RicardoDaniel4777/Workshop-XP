@@ -58,9 +58,10 @@ const ActivityDetail = () => {
   const sprintCatalog = useMemo(() => {
     return Array.from({ length: numeroSprints }, (_, idx) => {
       const iter = iteraciones[idx];
+      const numero = idx + 1;
       return {
-        id: iter?.id || `sprint-${idx + 1}`,
-        nombre: iter?.nombre || `Sprint ${iter?.numero || idx + 1}`
+        id: `iter-${numero}`,
+        nombre: iter?.nombre || `Sprint ${numero}`
       };
     });
   }, [iteraciones, numeroSprints]);
