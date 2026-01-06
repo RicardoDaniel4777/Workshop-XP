@@ -1,22 +1,30 @@
 {
   "diseno": {
     "personas": [
-      "Anthony Chiluiza"
+      "Anthony Chiluiza",
+      "Ricardo Villarreal"
     ],
     "rotas": {
-      "Anthony Chiluiza": {
-        "iter-1": "Navigator",
-        "iter-3": "Navigator",
-        "iter-5": "Navigator"
-      }
+      "Anthony Chiluiza": {},
+      "Ricardo Villarreal": {}
     }
   },
   "desarrollo": {
-    "personas": [],
-    "rotas": {}
+    "personas": [
+      "Cristian Robles",
+      "Julio Arrobo"
+    ],
+    "rotas": {
+      "Cristian Robles": {},
+      "Julio Arrobo": {}
+    }
   },
   "pruebas": {
-    "personas": [],
-    "rotas": {}
+    "personas": [
+      "Julio Arrobo"
+    ],
+    "rotas": {
+      "Julio Arrobo": {}
+    }
   }
 }

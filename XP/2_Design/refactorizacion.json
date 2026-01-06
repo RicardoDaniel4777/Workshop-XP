@@ -1,5 +1,12 @@
 {
   "items": [
-    
+    {
+      "id": 1767670684906,
+      "fecha": "2026-01-05",
+      "clase": "Hormiga",
+      "descripcion": "Se debe separar la logica comer() de la evolución de HSoldado.",
+      "beneficio": "Simplicidad: Cada método va a tener un unica responsabilidad",
+      "estado": "Pendiente"
+    }
   ]
 }

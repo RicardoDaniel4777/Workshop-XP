@@ -1,5 +1,40 @@
 {
-  "narrativa": "",
+  "narrativa": "El sistema es un hormiguero cibernetico protegiendo el kremlin, el anticyber dron es la reina que coordina la defenza, las funciones de software son hormigas que nacen como larvas y evolucionan. El arsenal enemigo es un virus que el automata debe validar; si el ADN no encaja, la BBA lo elimina.",
   "glosario": [
+    {
+      "id": 1767669887289,
+      "tecnico": "AnticyberDron",
+      "metaforico": "Reina"
+    },
+    {
+      "id": 1767669909270,
+      "tecnico": "Hormiga_Larva",
+      "metaforico": "Ciclo de vida"
+    },
+    {
+      "id": 1767669927842,
+      "tecnico": "BBA",
+      "metaforico": "Aguijon"
+    },
+    {
+      "id": 1767669941777,
+      "tecnico": "Automata",
+      "metaforico": "Olfato"
+    },
+    {
+      "id": 1767669951272,
+      "tecnico": "FuentePoder",
+      "metaforico": "Nectar"
+    },
+    {
+      "id": 1767669968863,
+      "tecnico": "ArchivoCSV",
+      "metaforico": "Rastro de feromonas"
+    },
+    {
+      "id": 1767669988017,
+      "tecnico": "",
+      "metaforico": ""
+    }
   ]
 }

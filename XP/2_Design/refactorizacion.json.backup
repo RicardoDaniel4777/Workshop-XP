@@ -1,20 +1,12 @@
 {
   "items": [
     {
-      "id": 1767569694056,
-      "fecha": "2026-01-29",
-      "clase": "Sistema",
-      "descripcion": "asdas",
-      "beneficio": "asdasd",
-      "estado": "Completada"
-    },
-    {
-      "id": 1767569680255,
-      "fecha": "2026-01-14",
-      "clase": "AntiCiberDron",
-      "descripcion": "jaja",
-      "beneficio": "jajaj",
-      "estado": "Completada"
+      "id": 1767670684906,
+      "fecha": "2026-01-05",
+      "clase": "Hormiga",
+      "descripcion": "Se debe separar la logica comer() de la evolución de HSoldado.",
+      "beneficio": "Simplicidad: Cada método va a tener un unica responsabilidad",
+      "estado": "Pendiente"
     }
   ]
 }
