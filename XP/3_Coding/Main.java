@@ -163,8 +163,8 @@ public class Main extends JFrame {
         boolean acceso = (u.equals("patmic") && p.equals("123")) ||
                          (u.equals("1726346719") && p.equals("123")) ||
                          (u.equals("1728795459") && p.equals("123")) ||
-                         (u.equals("1724252901") && p.equals("123")) ||
-                         (u.equals("2200223473") && p.equals("123"));
+                         (u.equals("2200223473") && p.equals("123")) ||
+                         (u.equals("1724252901") && p.equals("123"));
         
         if (acceso) {
             // Efecto de transición
