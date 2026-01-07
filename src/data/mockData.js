@@ -150,6 +150,17 @@ export const mockData = {
           roles: ["Anthony Chiluiza", "Ricardo Villareal"],
           artefactos: ["refactoring-log"],
           enlace: "/actividad/refactorizacion"
+        },
+        {
+          id: "reciclaje",
+          nombre: "Reciclaje",
+          tipo: "practica",
+          estado: "en-progreso",
+          progreso: 35,
+          descripcion: "Reutilización de código y componentes existentes para mejorar la eficiencia del desarrollo.",
+          roles: ["Anthony Chiluiza", "Ricardo Villareal"],
+          artefactos: ["reusable-components"],
+          enlace: "/actividad/reciclaje"
         }
       ]
     },
@@ -174,17 +185,6 @@ export const mockData = {
           enlace: "/actividad/programacion-parejas"
         },
         {
-          id: "tdd",
-          nombre: "Test-Driven Development (TDD)",
-          tipo: "practica",
-          estado: "en-progreso",
-          progreso: 55,
-          descripcion: "Escribir primero las pruebas, luego el código que las pasa.",
-          roles: ["Cristian Robles", "Anthony Chiluiza"],
-          artefactos: ["unit-tests"],
-          enlace: "/actividad/tdd"
-        },
-        {
           id: "integracion-continua",
           nombre: "Integración Continua",
           tipo: "practica",
@@ -196,15 +196,26 @@ export const mockData = {
           enlace: "/actividad/integracion-continua"
         },
         {
-          id: "estandares-codigo",
-          nombre: "Estándares de Código",
+          id: "disponibilidad-cliente",
+          nombre: "Disponibilidad del Cliente",
           tipo: "practica",
           estado: "en-progreso",
-          progreso: 30,
-          descripcion: "Convenciones de codificación compartidas por el equipo.",
+          progreso: 50,
+          descripcion: "El cliente está disponible para resolver dudas y proporcionar feedback constante.",
           roles: ["Cristian Robles", "Anthony Chiluiza"],
-          artefactos: ["coding-standards"],
-          enlace: "/actividad/estandares-codigo"
+          artefactos: ["client-feedback"],
+          enlace: "/actividad/disponibilidad-cliente"
+        },
+        {
+          id: "unidad-pruebas",
+          nombre: "Unidad de Pruebas",
+          tipo: "practica",
+          estado: "en-progreso",
+          progreso: 45,
+          descripcion: "Pruebas unitarias para verificar el correcto funcionamiento de componentes individuales.",
+          roles: ["Cristian Robles", "Anthony Chiluiza"],
+          artefactos: ["unit-tests"],
+          enlace: "/actividad/unidad-pruebas"
         }
       ]
     },
@@ -229,37 +240,15 @@ export const mockData = {
           enlace: "/actividad/pruebas-aceptacion"
         },
         {
-          id: "cliente-onsite",
-          nombre: "Cliente On-Site",
-          tipo: "practica",
-          estado: "en-progreso",
-          progreso: 20,
-          descripcion: "Cliente disponible todo el tiempo para resolver dudas.",
-          roles: ["Cristian Robles", "Julio Arrobo"],
-          artefactos: ["client-feedback"],
-          enlace: "/actividad/cliente-onsite"
-        },
-        {
-          id: "releases-pequenos",
-          nombre: "Releases Pequeños",
+          id: "implantacion",
+          nombre: "Implantación",
           tipo: "practica",
           estado: "pendiente",
           progreso: 0,
-          descripcion: "Entregas frecuentes de versiones funcionales del software.",
+          descripcion: "Proceso de puesta en producción del sistema desarrollado.",
           roles: ["Cristian Robles", "Julio Arrobo"],
-          artefactos: ["release-notes"],
-          enlace: "/actividad/releases-pequenos"
-        },
-        {
-          id: "ritmo-sostenible",
-          nombre: "Ritmo Sostenible",
-          tipo: "practica",
-          estado: "en-progreso",
-          progreso: 10,
-          descripcion: "Trabajar a un ritmo que pueda mantenerse indefinidamente.",
-          roles: ["Cristian Robles", "Julio Arrobo"],
-          artefactos: ["burndown-chart"],
-          enlace: "/actividad/ritmo-sostenible"
+          artefactos: ["deployment-docs"],
+          enlace: "/actividad/implantacion"
         }
       ]
     }
