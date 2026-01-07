@@ -100,6 +100,7 @@ const FasesXP = () => {
               <li>Uso de metáforas del sistema</li>
               <li>Tarjetas CRC</li>
               <li>Refactorización continua</li>
+              <li>Reciclaje</li>
             </ul>
           </div>
 
@@ -110,9 +111,9 @@ const FasesXP = () => {
             </div>
             <ul className="info-card-list">
               <li>Programación en parejas</li>
-              <li>Test-Driven Development (TDD)</li>
               <li>Integración continua</li>
-              <li>Estándares de código compartidos</li>
+              <li>Disponibilidad del Cliente</li>
+              <li>Unidad de Pruebas</li>
             </ul>
           </div>
 
@@ -123,9 +124,7 @@ const FasesXP = () => {
             </div>
             <ul className="info-card-list">
               <li>Pruebas de aceptación</li>
-              <li>Cliente on-site</li>
-              <li>Releases pequeños y frecuentes</li>
-              <li>Ritmo de trabajo sostenible</li>
+              <li>Implantación</li>
             </ul>
           </div>
         </div>

@@ -799,47 +799,6 @@ const ActivityDetail = () => {
           </div>
         );
 
-      case 'tdd':
-        return (
-          <div className="detailed-content">
-            <h3>🧪 Test-Driven Development (TDD)</h3>
-            <p>
-              TDD es una práctica de desarrollo donde se escriben las pruebas antes que el código. 
-              Sigue el ciclo Rojo-Verde-Refactor:
-            </p>
-            <ol>
-              <li><strong style={{color: '#ef4444'}}>Rojo:</strong> Escribir una prueba que falle</li>
-              <li><strong style={{color: '#10b981'}}>Verde:</strong> Escribir el código mínimo para que pase</li>
-              <li><strong style={{color: '#3b82f6'}}>Refactor:</strong> Mejorar el código manteniendo las pruebas pasando</li>
-            </ol>
-            <h4>Beneficios de TDD:</h4>
-            <ul>
-              <li>Código más limpio y mantenible</li>
-              <li>Mayor cobertura de pruebas</li>
-              <li>Detección temprana de errores</li>
-              <li>Diseño emergente y modular</li>
-              <li>Documentación viva del código</li>
-            </ul>
-            <h4>Ejemplo de Ciclo TDD:</h4>
-            <pre className="code-example">
-{`// 1. Escribir la prueba (ROJO)
-test('suma dos números correctamente', () => {
-  expect(suma(2, 3)).toBe(5);
-});
-
-// 2. Implementar el código (VERDE)
-function suma(a, b) {
-  return a + b;
-}
-
-// 3. Refactorizar si es necesario
-function suma(...numeros) {
-  return numeros.reduce((acc, n) => acc + n, 0);
-}`}
-            </pre>
-          </div>
-        );
-
       case 'programacion-parejas':
         return (
           <div className="detailed-content">
@@ -894,6 +853,134 @@ function suma(...numeros) {
               <li>Travis CI, CircleCI</li>
               <li>Azure DevOps, TeamCity</li>
             </ul>
+          </div>
+        );
+
+      case 'reciclaje':
+        return (
+          <div className="detailed-content">
+            <h3>♻️ Reciclaje de Código</h3>
+            <p>
+              El reciclaje en XP se refiere a la reutilización de código, componentes y soluciones existentes 
+              para mejorar la eficiencia del desarrollo y mantener la consistencia en el sistema.
+            </p>
+            <h4>Principios del Reciclaje:</h4>
+            <ul>
+              <li>No reinventar la rueda - usar lo que ya funciona</li>
+              <li>Crear componentes reutilizables desde el inicio</li>
+              <li>Mantener una librería de componentes común</li>
+              <li>Documentar patrones y soluciones exitosas</li>
+              <li>Compartir conocimiento entre el equipo</li>
+            </ul>
+            <h4>Beneficios:</h4>
+            <ul>
+              <li>Reducción del tiempo de desarrollo</li>
+              <li>Mayor consistencia en el código</li>
+              <li>Menos errores (código ya probado)</li>
+              <li>Facilita el mantenimiento</li>
+              <li>Mejora la calidad general del sistema</li>
+            </ul>
+            <h4>Buenas Prácticas:</h4>
+            <ul>
+              <li>Identificar patrones comunes en el código</li>
+              <li>Extraer funcionalidad repetida a módulos compartidos</li>
+              <li>Mantener un catálogo de componentes reutilizables</li>
+              <li>Revisar código existente antes de crear nuevas soluciones</li>
+              <li>Refactorizar para mejorar la reutilización</li>
+            </ul>
+            <h4>Ejemplo de Componente Reutilizable:</h4>
+            <pre className="code-example">
+{`// Componente de botón reutilizable
+function Button({ label, onClick, variant = 'primary' }) {
+  const styles = {
+    primary: 'bg-blue-500 text-white',
+    secondary: 'bg-gray-500 text-white',
+    danger: 'bg-red-500 text-white'
+  };
+  
+  return (
+    <button 
+      className={\`px-4 py-2 rounded \${styles[variant]}\`}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  );
+}
+
+// Reutilización en múltiples lugares
+<Button label="Guardar" onClick={handleSave} />
+<Button label="Cancelar" onClick={handleCancel} variant="secondary" />
+<Button label="Eliminar" onClick={handleDelete} variant="danger" />`}
+            </pre>
+          </div>
+        );
+
+      case 'disponibilidad-cliente':
+        return (
+          <div className="detailed-content">
+            <h3>👤 Disponibilidad del Cliente</h3>
+            <p>
+              En XP, el cliente debe estar disponible para el equipo de desarrollo durante todo el proyecto. 
+              Esto permite resolver dudas rápidamente, obtener feedback inmediato y ajustar prioridades según sea necesario.
+            </p>
+            <h4>Beneficios:</h4>
+            <ul>
+              <li>Resolución rápida de dudas y ambigüedades</li>
+              <li>Feedback inmediato sobre el trabajo realizado</li>
+              <li>Ajuste de prioridades en tiempo real</li>
+              <li>Mayor alineación con las necesidades del negocio</li>
+              <li>Reducción de malentendidos y retrabajos</li>
+            </ul>
+            <h4>Responsabilidades del Cliente:</h4>
+            <ul>
+              <li>Participar activamente en la planificación</li>
+              <li>Escribir y priorizar historias de usuario</li>
+              <li>Responder preguntas del equipo</li>
+              <li>Proporcionar feedback constante</li>
+              <li>Tomar decisiones sobre el alcance y prioridades</li>
+            </ul>
+          </div>
+        );
+
+      case 'unidad-pruebas':
+        return (
+          <div className="detailed-content">
+            <h3>🧪 Unidad de Pruebas</h3>
+            <p>
+              Las pruebas unitarias son pruebas automatizadas que verifican el correcto funcionamiento 
+              de componentes individuales del código (funciones, métodos, clases) de forma aislada.
+            </p>
+            <h4>Características:</h4>
+            <ul>
+              <li>Pruebas rápidas y automatizadas</li>
+              <li>Verifican una sola unidad de código</li>
+              <li>Son independientes entre sí</li>
+              <li>Fáciles de mantener y entender</li>
+              <li>Se ejecutan frecuentemente</li>
+            </ul>
+            <h4>Beneficios:</h4>
+            <ul>
+              <li>Detección temprana de errores</li>
+              <li>Facilitan el refactoring</li>
+              <li>Documentan el comportamiento del código</li>
+              <li>Mejoran el diseño del código</li>
+              <li>Aumentan la confianza al hacer cambios</li>
+            </ul>
+            <h4>Ejemplo de Prueba Unitaria:</h4>
+            <pre className="code-example">
+{`// Función a probar
+function calcularDescuento(precio, porcentaje) {
+  return precio * (porcentaje / 100);
+}
+
+// Prueba unitaria
+test('calcular descuento correctamente', () => {
+  expect(calcularDescuento(100, 10)).toBe(10);
+  expect(calcularDescuento(50, 20)).toBe(10);
+  expect(calcularDescuento(200, 15)).toBe(30);
+});`}
+            </pre>
           </div>
         );
 
