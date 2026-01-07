@@ -249,9 +249,9 @@ class AntCiberDronGUI extends JFrame {
             "[+] TEAM [3]: Grupo 3\n" +
             "• Alumno 1: 1726346719 | Anthony\n" +
             "• Alumno 2: 1728795459 | Ricardo\n" +
-            "• Alumno 3: 1724252901 | Julio\n" +
-            "• Alumno 4: 2200223473 | Cristian\n" +
-            "• Profesor: patmic | Patricia Micolta"
+            "• Alumno 3: 2200223473 | Julio\n" +
+            "• Alumno 4: 1724252901 | Cristian\n" +
+            "• Profesor: patmic | Patricio Paccha"
         );
         
         panel.add(lblTitulo, BorderLayout.NORTH);
