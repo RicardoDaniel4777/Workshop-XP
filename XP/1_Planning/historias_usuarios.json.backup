@@ -343,105 +343,117 @@
   },
   {
     "titulo": "HU19 – Gestión de energía del AnticiberDron",
-    "rol": "Usuario",
-    "accion": "que el AnticiberDron varíe su energía según la fuente de poder",
-    "beneficio": "optimizar su rendimiento y evitar fallos durante la misión.",
+    "rol": "sistema",
+    "accion": "gestionar el consumo de energía del AntCiberDron según la fuente de poder",
+    "beneficio": "garantizar un funcionamiento eficiente y seguro",
     "prioridad": "Media",
-    "storyPoints": 0,
+    "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "La energía varía según el tipo de fuente conectada",
+      "Se detectan niveles críticos de energía",
+      "El sistema registra el consumo durante la operación"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 19,
     "codigo": "HU-019",
     "fechaCreacion": "2026-01-03T02:21:31.903Z",
-    "fechaModificacion": "2026-01-03T02:38:32.039Z"
+    "fechaModificacion": "2026-01-13T05:18:53.718Z"
   },
   {
     "titulo": "HU20 – Vuelo asistido por fuente de poder",
-    "rol": "operador del AnticiberDron",
-    "accion": "que el dron pueda volar usando energía de la fuente de poder",
-    "beneficio": "garantizar estabilidad y continuidad en operaciones prolongadas.",
+    "rol": "sistema",
+    "accion": "permitir el vuelo del AntCiberDron usando energía de la fuente de poder",
+    "beneficio": "asegurar la estabilidad durante la misión",
     "prioridad": "Media",
     "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "El dron vuela únicamente si la energía es suficiente",
+      "La fuente de poder se utiliza durante todo el vuelo",
+      "Se activa un protocolo de seguridad ante fallas de energía"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 20,
     "codigo": "HU-020",
     "fechaCreacion": "2026-01-03T02:22:36.911Z",
-    "fechaModificacion": "2026-01-03T04:24:34.438Z"
+    "fechaModificacion": "2026-01-13T05:21:50.546Z"
   },
   {
     "titulo": "HU21 – Recarga y reemplazo de la fuente de poder",
     "rol": "técnico de mantenimiento",
-    "accion": "que la fuente de poder sea recargable y reemplazable con asistencia de LIA",
-    "beneficio": "reducir tiempos de inactividad y mejorar la eficiencia del sistema.",
+    "accion": "recargar y reemplazar la fuente de poder con asistencia de LIA",
+    "beneficio": "mantener operativo el AntCiberDron",
     "prioridad": "Media",
     "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "La fuente puede ser recargada correctamente",
+      "El sistema guía el reemplazo mediante LIA",
+      "El dron reconoce la nueva fuente al reiniciar"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 21,
     "codigo": "HU-021",
     "fechaCreacion": "2026-01-03T02:23:26.837Z",
-    "fechaModificacion": "2026-01-03T04:24:05.741Z"
+    "fechaModificacion": "2026-01-13T05:23:03.185Z"
   },
   {
-    "titulo": "HU22 – Aprendizaje automático de idiomas",
-    "rol": "sistema AnticiberDron",
-    "accion": "aprender inglés y español de forma continua",
-    "beneficio": "mejorar la comunicación y comprensión de órdenes en ambos idiomas.",
+    "titulo": "HU22 – Aprendizaje de idiomas del AntCiberDron",
+    "rol": "sistema",
+    "accion": "aprender inglés y español",
+    "beneficio": "interpretar órdenes en ambos idiomas",
     "prioridad": "Media",
     "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "El sistema procesa entradas en inglés y español",
+      "Se almacena el aprendizaje lingüístico",
+      "Se ejecutan órdenes en cualquiera de los dos idiomas"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 22,
     "codigo": "HU-022",
     "fechaCreacion": "2026-01-03T02:24:34.345Z",
-    "fechaModificacion": "2026-01-03T04:23:37.678Z"
+    "fechaModificacion": "2026-01-13T05:24:31.315Z"
   },
   {
-    "titulo": "HU23 – Validación experta del aprendizaje lingüístico",
+    "titulo": "HU23 – Validación lingüística por expertos",
     "rol": "experto bilingüe (inglés–español)",
-    "accion": "entrenar y validar el léxico, la gramática y la fonética del dron",
-    "beneficio": "para asegurar una interpretación correcta del lenguaje.",
+    "accion": "validar el léxico, gramática y fonética del sistema",
+    "beneficio": "garantizar una correcta interpretación del lenguaje",
     "prioridad": "Media",
     "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "Solo expertos pueden validar el lenguaje",
+      "Se permite corregir léxico y gramática",
+      "El sistema actualiza el modelo tras la validación"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 23,
     "codigo": "HU-023",
     "fechaCreacion": "2026-01-03T02:27:14.938Z",
-    "fechaModificacion": "2026-01-03T04:23:57.085Z"
+    "fechaModificacion": "2026-01-13T05:25:57.321Z"
   },
   {
     "titulo": "HU24 – Creación de hormiguero virtual",
     "rol": "usuario de la KGD",
-    "accion": "crear mi propio hormiguero virtual",
-    "beneficio": "simular entornos y observar el comportamiento de las hormigas.",
+    "accion": "crear un hormiguero virtual",
+    "beneficio": "simular un entorno controlado",
     "prioridad": "Media",
     "storyPoints": 2,
     "criteriosAceptacion": [
-      "Sin criterios definidos"
+      "El sistema permite crear un nuevo hormiguero",
+      "El hormiguero se visualiza correctamente",
+      "El entorno puede guardarse y reutilizarse"
     ],
     "estado": "pendiente",
     "iteracion": "",
     "id": 24,
     "codigo": "HU-024",
     "fechaCreacion": "2026-01-03T02:36:41.381Z",
-    "fechaModificacion": "2026-01-03T04:24:23.526Z"
+    "fechaModificacion": "2026-01-13T05:27:24.674Z"
   },
   {
     "titulo": "HU25 – Creación y gestión de hormigas",
