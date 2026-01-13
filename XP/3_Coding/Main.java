@@ -173,6 +173,7 @@ public class Main extends JFrame {
             Timer timer = new Timer(800, ev -> {
                 new AntCiberDronGUI().setVisible(true);
                 this.dispose();
+                
             });
             timer.setRepeats(false);
             timer.start();
