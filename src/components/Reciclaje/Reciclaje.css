@@ -1,0 +1,255 @@
+.reciclaje-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  background: #f8f9fa;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.reciclaje-header {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #374151;
+}
+
+.reciclaje-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.5px;
+}
+
+.reciclaje-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.reciclaje-loading {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Formulario */
+.reciclaje-form {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.required {
+  color: #dc2626;
+  margin-left: 2px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #111827;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.btn-registrar {
+  width: 100%;
+  padding: 12px 20px;
+  background: #111827;
+  color: #ffffff;
+  border: none;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-registrar:hover {
+  background: #1f2937;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-registrar:active {
+  transform: translateY(1px);
+}
+
+/* Lista de reciclajes */
+.reciclaje-lista {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 25px;
+}
+
+.lista-titulo {
+  margin: 0 0 20px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.lista-vacia {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.lista-vacia p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.lista-vacia .hint {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+/* Items de reciclaje */
+.reciclaje-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reciclaje-item {
+  padding: 15px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-left: 3px solid #3b82f6;
+  transition: all 0.2s ease;
+}
+
+.reciclaje-item:hover {
+  background: #f3f4f6;
+  border-left-color: #2563eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #d1d5db;
+}
+
+.item-componente {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.item-fecha {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.item-proyecto {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.item-proyecto strong {
+  color: #1f2937;
+}
+
+.item-notas {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.notas-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.notas-contenido {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  white-space: pre-wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reciclaje-container {
+    padding: 15px;
+  }
+
+  .reciclaje-form,
+  .reciclaje-lista {
+    padding: 20px;
+  }
+
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .item-fecha {
+    font-size: 0.8rem;
+  }
+}

@@ -6,6 +6,7 @@ import HistoriaUsuarioModal from '../../components/HistoriaUsuarioModal/Historia
 import { mockData } from '../../data/mockData';
 import SystemMetaphor from '../../components/SystemMetaphor/SystemMetaphor';
 import RefactorLog from '../../components/RefactorLog/RefactorLog';
+import Reciclaje from '../../components/Reciclaje/Reciclaje';
 import './ActivityDetail.css';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
@@ -857,64 +858,7 @@ const ActivityDetail = () => {
         );
 
       case 'reciclaje':
-        return (
-          <div className="detailed-content">
-            <h3>♻️ Reciclaje de Código</h3>
-            <p>
-              El reciclaje en XP se refiere a la reutilización de código, componentes y soluciones existentes 
-              para mejorar la eficiencia del desarrollo y mantener la consistencia en el sistema.
-            </p>
-            <h4>Principios del Reciclaje:</h4>
-            <ul>
-              <li>No reinventar la rueda - usar lo que ya funciona</li>
-              <li>Crear componentes reutilizables desde el inicio</li>
-              <li>Mantener una librería de componentes común</li>
-              <li>Documentar patrones y soluciones exitosas</li>
-              <li>Compartir conocimiento entre el equipo</li>
-            </ul>
-            <h4>Beneficios:</h4>
-            <ul>
-              <li>Reducción del tiempo de desarrollo</li>
-              <li>Mayor consistencia en el código</li>
-              <li>Menos errores (código ya probado)</li>
-              <li>Facilita el mantenimiento</li>
-              <li>Mejora la calidad general del sistema</li>
-            </ul>
-            <h4>Buenas Prácticas:</h4>
-            <ul>
-              <li>Identificar patrones comunes en el código</li>
-              <li>Extraer funcionalidad repetida a módulos compartidos</li>
-              <li>Mantener un catálogo de componentes reutilizables</li>
-              <li>Revisar código existente antes de crear nuevas soluciones</li>
-              <li>Refactorizar para mejorar la reutilización</li>
-            </ul>
-            <h4>Ejemplo de Componente Reutilizable:</h4>
-            <pre className="code-example">
-{`// Componente de botón reutilizable
-function Button({ label, onClick, variant = 'primary' }) {
-  const styles = {
-    primary: 'bg-blue-500 text-white',
-    secondary: 'bg-gray-500 text-white',
-    danger: 'bg-red-500 text-white'
-  };
-  
-  return (
-    <button 
-      className={\`px-4 py-2 rounded \${styles[variant]}\`}
-      onClick={onClick}
-    >
-      {label}
-    </button>
-  );
-}
-
-// Reutilización en múltiples lugares
-<Button label="Guardar" onClick={handleSave} />
-<Button label="Cancelar" onClick={handleCancel} variant="secondary" />
-<Button label="Eliminar" onClick={handleDelete} variant="danger" />`}
-            </pre>
-          </div>
-        );
+        return <Reciclaje />;
 
       case 'disponibilidad-cliente':
         return (

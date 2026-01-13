@@ -29,27 +29,7 @@
         "desarrollo": 0,
         "pruebas": 0
       }
-    },
-    {
-      "id": "iter-4",
-      "nombre": "Sprint 4",
-      "fases": {
-        "planificacion": 30,
-        "diseno": 25,
-        "desarrollo": 0,
-        "pruebas": 0
-      }
-    },
-    {
-      "id": "iter-5",
-      "nombre": "Sprint 5",
-      "fases": {
-        "planificacion": 30,
-        "diseno": 25,
-        "desarrollo": 0,
-        "pruebas": 0
-      }
     }
   ],
-  "ultimaActualizacion": "2026-01-13T05:29:34.623Z"
+  "ultimaActualizacion": "2026-01-13T22:30:57.562Z"
 }

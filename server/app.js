@@ -11,6 +11,7 @@ const rotacionesRouter = require('./routes/rotaciones');
 const tarjetasCRCRouter = require('./routes/tarjetasCRC');
 const metaforaSistemaRouter = require('./routes/metaforaSistema');
 const refactorizacionesRouter = require('./routes/refactorizaciones');
+const reciclajeRouter = require('./routes/reciclaje');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use('/api/rotaciones', rotacionesRouter);
 app.use('/api/tarjetas-crc', tarjetasCRCRouter);
 app.use('/api/metafora-sistema', metaforaSistemaRouter);
 app.use('/api/refactorizaciones', refactorizacionesRouter);
+app.use('/api/reciclaje', reciclajeRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -65,6 +67,7 @@ app.listen(PORT, () => {
 ║  • GET/POST   /api/tarjetas-crc                           ║
 ║  • GET/PUT    /api/metafora-sistema                       ║
 ║  • GET/PUT    /api/refactorizaciones                      ║
+║  • GET/PUT    /api/reciclaje                              ║
 ║                                                            ║
 ║  Health Check: GET /api/health                            ║
 ╚════════════════════════════════════════════════════════════╝
