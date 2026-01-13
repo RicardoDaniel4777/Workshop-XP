@@ -27,7 +27,7 @@ La forma más rápida de ejecutar el proyecto es con Docker:
 cd "C:\Users\anthony\Desktop\Universidad\Deberes\Sexto Semestre\Metodologías ágiles\V3"
 
 # Construir y levantar el contenedor
-docker-compose up -d
+docker-compose up --build -d
 
 # El dashboard estará disponible en http://localhost:3000
 ```
