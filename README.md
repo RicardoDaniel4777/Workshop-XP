@@ -23,8 +23,6 @@ Framework interactivo para la gestión y visualización de proyectos con metodol
 La forma más rápida de ejecutar el proyecto es con Docker:
 
 ```bash
-# Clonar o navegar al directorio del proyecto
-cd "C:\Users\anthony\Desktop\Universidad\Deberes\Sexto Semestre\Metodologías ágiles\V3"
 
 # Construir y levantar el contenedor
 docker-compose up --build -d

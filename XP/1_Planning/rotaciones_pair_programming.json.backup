@@ -5,8 +5,15 @@
       "Ricardo Villarreal"
     ],
     "rotas": {
-      "Anthony Chiluiza": {},
-      "Ricardo Villarreal": {}
+      "Anthony Chiluiza": {
+        "iter-2": "Navigator",
+        "iter-4": "Navigator"
+      },
+      "Ricardo Villarreal": {
+        "iter-1": "Navigator",
+        "iter-3": "Navigator",
+        "iter-5": "Navigator"
+      }
     }
   },
   "desarrollo": {
@@ -15,16 +22,31 @@
       "Julio Arrobo"
     ],
     "rotas": {
-      "Cristian Robles": {},
-      "Julio Arrobo": {}
+      "Cristian Robles": {
+        "iter-2": "Navigator",
+        "iter-4": "Navigator"
+      },
+      "Julio Arrobo": {
+        "iter-1": "Navigator",
+        "iter-3": "Navigator",
+        "iter-5": "Navigator"
+      }
     }
   },
   "pruebas": {
     "personas": [
-      "Julio Arrobo"
+      "Julio Arrobo",
+      "Ricardo Villarreal"
     ],
     "rotas": {
-      "Julio Arrobo": {}
+      "Julio Arrobo": {
+        "iter-2": "Navigator",
+        "iter-4": "Navigator"
+      },
+      "Ricardo Villarreal": {
+        "iter-1": "Navigator",
+        "iter-3": "Navigator"
+      }
     }
   }
 }
